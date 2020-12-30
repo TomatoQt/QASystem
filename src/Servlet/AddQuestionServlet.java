@@ -1,6 +1,7 @@
 package Servlet;
 
 import Bean.Question;
+import Bean.Student;
 import Dao.QuestionDao;
 
 import javax.servlet.ServletException;
@@ -11,20 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet(name = "AddQuestionServlet")
+@WebServlet(name = "AddQuestionServlet", urlPatterns = {"/addQuestion"})
 public class AddQuestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id=request.getParameter("question_id");
-        String stu_id=request.getParameter("stu_id");
+        QuestionDao dao=new QuestionDao();
+        String id="Q"+ (dao.getBigId()+1);
+        String stu_id=((Student)request.getSession().getAttribute("user")).getId();
         String title=request.getParameter("question_title");
         String content=request.getParameter("question_content");
         int click=0;//initial state
         Date time=new Date(System.currentTimeMillis());
 
         Question question=new Question(id,stu_id,title,content,click,time);
-        QuestionDao dao=new QuestionDao();
         if (dao.addQuestion(question)){
-            response.sendRedirect("");//add question page
+            request.setAttribute("add_question_success","提问成功");
+            request.getRequestDispatcher("newQuestion.jsp").forward(request,response);//add question page
         }else{
             System.out.println("add question failed");
         }

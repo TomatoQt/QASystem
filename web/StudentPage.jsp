@@ -13,6 +13,26 @@
     <title>学生个人信息</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
 </head>
 <body class="myBackground">
 <div class="container">
@@ -41,10 +61,10 @@
                                 &nbsp;&nbsp;我的&nbsp;&nbsp;
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="btn dropdown-item" type="button" href="#">个人信息</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的提问</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的回答</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的建议</a>
+                                <a class="btn dropdown-item" type="button" href="StudentPage.jsp">个人信息</a>
+                                <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
+                                <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
+                                <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
                             </div>
                         </div>
                     </li>
@@ -63,8 +83,75 @@
         </nav>
     </div>
     <%--下部主体--%>
-    <div class="mt-lg-5">
-
+    <div class="mt-lg-5 pt-lg-5">
+        <div class="blurryBackground">
+            <div class="mt-5 mb-5 ml-5 mr-5">
+                <form class="needs-validation" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">名字</label>
+                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <div class="valid-feedback">
+                                不错
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">姓氏</label>
+                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <div class="valid-feedback">
+                                不错
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">电话</label>
+                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="invalid-feedback">
+                                请输入电话
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationCustom04">昵称</label>
+                            <input type="text" class="form-control" id="validationCustom04" required>
+                            <div class="invalid-feedback">
+                                请输入昵称
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="validationCustom05">性别</label>
+                            <select class="custom-select" id="validationCustom05" required>
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                请选择性别
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom06">邮箱</label>
+                            <input type="text" class="form-control" id="validationCustom06" required>
+                            <div class="valid-feedback">
+                                不错
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationCustom07">身份证</label>
+                            <input type="text" class="form-control" id="validationCustom07" required>
+                            <div class="valid-feedback">
+                                不错
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary mt-3" type="submit">确认提交</button>
+                        <button class="btn btn-info mt-3" type="reset">&nbsp;&nbsp;&nbsp;&nbsp;重置&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <%--end--%>

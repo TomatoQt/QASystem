@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -40,10 +41,10 @@
                                 &nbsp;&nbsp;我的&nbsp;&nbsp;
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="btn dropdown-item" type="button" href="#">个人信息</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的提问</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的回答</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的建议</a>
+                                <a class="btn dropdown-item" type="button" href="StudentPage.jsp">个人信息</a>
+                                <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
+                                <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
+                                <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
                             </div>
                         </div>
                     </li>
@@ -66,11 +67,11 @@
         <%--毛玻璃背景效果--%>
         <div class="blurryBackground pt-lg-5">
             <div class="col-10 offset-sm-1">
-                <form action="" method="post" class="was-validated">
+                <form action="addQuestion" method="post" class="was-validated">
                     <div class="mb-3">
                         <label for="validationTextarea" style="color: #c6c8ca">问题标题</label>
                         <div class="input-group is-invalid">
-                            <input type="text" class="form-control is-invalid" placeholder="请输入问题的标题" aria-describedby="validatedInputGroupPrepend" required>
+                            <input type="text" class="form-control is-invalid" name="question_title" placeholder="请输入问题的标题" aria-describedby="validatedInputGroupPrepend" required>
                             <div class="valid-feedback">
                                 问题有效
                             </div>
@@ -78,11 +79,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="validationTextarea" style="color: #c6c8ca">问题内容</label>
-                        <textarea class="form-control is-invalid" rows="10" id="validationTextarea" placeholder="请详细地描述问题内容" required></textarea>
+                        <textarea class="form-control is-invalid" rows="10" name="question_content" id="validationTextarea" placeholder="请详细地描述问题内容" required></textarea>
                         <div class="valid-feedback">
                             问题内容有效
                         </div>
                     </div>
+                    <c:if test="${requestScope.add_question_success != null}">
+                        <div class="text-center offset-5">
+                            <div class="alert alert-success col-3" role="alert">
+                                    ${requestScope.add_question_success}
+                            </div>
+                        </div>
+                    </c:if>
                     <div class="text-center">
                         <button class="btn btn-primary" type="submit">提交问题</button>
                         <button class="btn btn-info" type="reset">清空内容</button>

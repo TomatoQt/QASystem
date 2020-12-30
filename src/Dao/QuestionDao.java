@@ -112,4 +112,65 @@ public class QuestionDao extends BaseDao{
             return null;
         }
     }
+
+    public ArrayList<Question> findQuestionByStu(String stu_id){
+        String sql="SELECT * FROM Question WHERE stu_id=?";
+        ArrayList<Question> questionList=new ArrayList<Question>();
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1,stu_id);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                Question question=new Question();
+                question.setId(rst.getString("q_id"));
+                question.setStu_id(rst.getString("stu_id"));
+                question.setTitle(rst.getString("q_title"));
+                question.setContent(rst.getString("q_content"));
+                question.setClick(rst.getInt("q_click"));
+                question.setTime(rst.getDate("q_time"));
+                questionList.add(question);
+            }
+            connection.close();
+            return questionList;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return null;
+        }
+    }
+
+    public int getBigId(){
+        String sql="SELECT * FROM Question";
+        ArrayList<Question> questionList=new ArrayList<Question>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                Question question=new Question();
+                question.setId(rst.getString("q_id"));
+                question.setStu_id(rst.getString("stu_id"));
+                question.setTitle(rst.getString("q_title"));
+                question.setContent(rst.getString("q_content"));
+                question.setClick(rst.getInt("q_click"));
+                question.setTime(rst.getDate("q_time"));
+                questionList.add(question);
+            }
+            connection.close();
+            if (questionList.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (Question question : questionList) {
+                    int temp = Integer.parseInt(question.getId().substring(1));//跳过第一个字符,如Q1
+                    if (temp > big)
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
+        }
+    }
 }

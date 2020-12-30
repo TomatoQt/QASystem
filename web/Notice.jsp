@@ -41,10 +41,10 @@
                                 &nbsp;&nbsp;我的&nbsp;&nbsp;
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="btn dropdown-item" type="button" href="#">个人信息</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的提问</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的回答</a>
-                                <a class="btn dropdown-item" type="button" href="#">我的建议</a>
+                                <a class="btn dropdown-item" type="button" href="StudentPage.jsp">个人信息</a>
+                                <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
+                                <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
+                                <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
                             </div>
                         </div>
                     </li>

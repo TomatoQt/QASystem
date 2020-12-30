@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: TomatoMan
   Date: 2020/12/30
-  Time: 18:44
+  Time: 22:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>${sessionScope.userType}提议</title>
+    <title>问题</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
 </head>
@@ -63,32 +63,61 @@
         </nav>
     </div>
     <%--下部主体--%>
-    <div class="mt-lg-5  pt-lg-5 align-self-center">
-        <%--毛玻璃背景效果--%>
-        <div class="blurryBackground pt-lg-5">
-            <div class="col-10 offset-sm-1">
-                <form action="" method="post" class="was-validated">
-                    <div class="mb-3">
-                        <label for="validationTextarea" style="color: #c6c8ca">提议标题</label>
-                        <div class="input-group is-invalid">
-                            <input type="text" class="form-control is-invalid" placeholder="请输入提议的标题" aria-describedby="validatedInputGroupPrepend" required>
-                            <div class="valid-feedback">
-                                标题有效
+    <div class="mt-lg-5 pt-lg-5">
+        <h3 class="pt-2" style="color: #e9ecef">问题<span class="badge badge-secondary ml-1">Q</span></h3>
+        <div>
+            <!--问题-->
+            <div class="card mb-4">
+                <div class="card-header">
+                    提问者
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${requestScope.question.title}</h5>
+                    <p class="card-text">${requestScope.question.content}</p>
+                    <a class="btn btn-outline-info d-inline-block" type="button" href="answer.do?Q_id=${requestScope.question.id}">我来答</a>
+                </div>
+            </div>
+            <!--教师答案-->
+            <h3 class="pt-2" style="color: #bd4147">教师解答<span class="badge badge-success ml-2">Teacher Answers</span></h3>
+            <div class="accordion">
+                <c:forEach items="${requestScope.teacher_answers}" var="A" varStatus="status">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    教师解答 #${status.count}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                ${A.teaA_content}
                             </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="validationTextarea" style="color: #c6c8ca">问题内容</label>
-                        <textarea class="form-control is-invalid" rows="10" id="validationTextarea" placeholder="请详细地描述提议内容" required></textarea>
-                        <div class="valid-feedback">
-                            提议内容有效
+                </c:forEach>
+            </div>
+            <!--学生答案-->
+            <h3 class="pt-2" style="color: #bd4147">学生解答<span class="badge badge-success ml-2">Student Answers</span></h3>
+            <div class="accordion">
+                <c:forEach items="${requestScope.student_answers}" var="A" varStatus="status">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    学生解答 #${status.count}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                    ${A.stuA_content}
+                            </div>
                         </div>
                     </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary" type="submit">提交提议</button>
-                        <button class="btn btn-info" type="reset">清空内容</button>
-                    </div>
-                </form>
+                </c:forEach>
             </div>
         </div>
     </div>

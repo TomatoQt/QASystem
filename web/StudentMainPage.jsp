@@ -41,10 +41,10 @@
                                     &nbsp;&nbsp;我的&nbsp;&nbsp;
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                    <a class="btn dropdown-item" type="button" href="#">个人信息</a>
-                                    <a class="btn dropdown-item" type="button" href="#">我的提问</a>
-                                    <a class="btn dropdown-item" type="button" href="#">我的回答</a>
-                                    <a class="btn dropdown-item" type="button" href="#">我的建议</a>
+                                    <a class="btn dropdown-item" type="button" href="StudentPage.jsp">个人信息</a>
+                                    <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
+                                    <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
+                                    <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
                                 </div>
                             </div>
                         </li>
@@ -63,17 +63,17 @@
             </nav>
         </div>
         <%--下部主体--%>
-        <div class="mt-lg-5">
-            <h3 class="pt-2" style="color: #20c997">新问题<span class="badge badge-secondary ml-1">New</span></h3>
+        <div class="mt-lg-5 pt-lg-5">
+            <h3 class="pt-2" style="color: #e9ecef">新问题<span class="badge badge-secondary ml-1">New</span></h3>
             <c:forEach items="${requestScope.questions}" var="Q">
-                <div class="card">
+                <div class="card mb-4">
                     <div class="card-header">
                         提问者
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">${Q.title}</h5>
                         <p class="card-text">${Q.content}</p>
-                        <a href="#" class="btn btn-primary">查看问题</a>
+                        <a href="QuestionAnswer.do?Q_id=${Q.id}" class="btn btn-primary">查看问题</a>
                     </div>
                 </div>
             </c:forEach>
