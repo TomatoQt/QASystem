@@ -30,14 +30,14 @@
             <div class="d-inline-block">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="btn btn-light mr-2" href="StudentMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light mr-2" href="StudentMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-light mr-2" href="newQuestion.jsp">&nbsp;&nbsp;提问&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light mr-2" href="newQuestion.jsp">&nbsp;&nbsp;提问&nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown mr-2">
-                            <button class="btn btn-light" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button class="btn btn-outline-light" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 &nbsp;&nbsp;我的&nbsp;&nbsp;
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -49,10 +49,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-light mr-2" href="OfferSuggestion.jsp">提出建议</a>
+                        <a class="btn btn-outline-light mr-2" href="OfferSuggestion.jsp">提出建议</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-light" href="Notice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light" href="Notice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
                     </li>
                 </ul>
             </div>
