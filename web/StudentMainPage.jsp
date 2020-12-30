@@ -30,25 +30,35 @@
                 <div class="d-inline-block">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="StudentMainPage.jsp">主页</a>
+                            <a class="btn btn-light mr-2" href="StudentMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="newQuestion.jsp">提问</a>
+                            <a class="btn btn-light mr-2" href="newQuestion.jsp">&nbsp;&nbsp;提问&nbsp;&nbsp;</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">我的</a>
+                            <div class="dropdown mr-2">
+                                <button class="btn btn-light" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    &nbsp;&nbsp;我的&nbsp;&nbsp;
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <a class="btn dropdown-item" type="button" href="#">个人信息</a>
+                                    <a class="btn dropdown-item" type="button" href="#">我的提问</a>
+                                    <a class="btn dropdown-item" type="button" href="#">我的回答</a>
+                                    <a class="btn dropdown-item" type="button" href="#">我的建议</a>
+                                </div>
+                            </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">提出建议</a>
+                            <a class="btn btn-light mr-2" href="OfferSuggestion.jsp">提出建议</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">公告</a>
+                            <a class="btn btn-light" href="Notice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
                         </li>
                     </ul>
                 </div>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="请输入搜索的问题内容" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>
                 </form>
             </nav>
         </div>

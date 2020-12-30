@@ -2,14 +2,15 @@
   Created by IntelliJ IDEA.
   User: TomatoMan
   Date: 2020/12/30
-  Time: 17:24
+  Time: 18:44
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>提问</title>
+    <title>学生个人信息</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
 </head>
@@ -62,34 +63,8 @@
         </nav>
     </div>
     <%--下部主体--%>
-    <div class="mt-lg-5 pt-lg-5 align-self-center">
-        <%--毛玻璃背景效果--%>
-        <div class="blurryBackground pt-lg-5">
-            <div class="col-10 offset-sm-1">
-                <form action="" method="post" class="was-validated">
-                    <div class="mb-3">
-                        <label for="validationTextarea" style="color: #c6c8ca">问题标题</label>
-                        <div class="input-group is-invalid">
-                            <input type="text" class="form-control is-invalid" placeholder="请输入问题的标题" aria-describedby="validatedInputGroupPrepend" required>
-                            <div class="valid-feedback">
-                                问题有效
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="validationTextarea" style="color: #c6c8ca">问题内容</label>
-                        <textarea class="form-control is-invalid" rows="10" id="validationTextarea" placeholder="请详细地描述问题内容" required></textarea>
-                        <div class="valid-feedback">
-                            问题内容有效
-                        </div>
-                    </div>
-                    <div class="text-center">
-                        <button class="btn btn-primary" type="submit">提交问题</button>
-                        <button class="btn btn-info" type="reset">清空内容</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+    <div class="mt-lg-5">
+
     </div>
 
     <%--end--%>
