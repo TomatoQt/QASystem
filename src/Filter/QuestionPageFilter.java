@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebFilter(filterName = "QuestionPageFilter", urlPatterns = {"/QuestionPage.jsp"})
+@WebFilter(filterName = "QuestionPageFilter", urlPatterns = {"/StudentMainPage.jsp"})
 public class QuestionPageFilter extends HttpFilter implements Filter {
     public void destroy() {
     }

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("user",student);
                 request.getSession().setAttribute("userType","student");
                 login_message="学生登录成功";
-                response.sendRedirect("QuestionPage.jsp");//跳转到登录过后的主页
+                response.sendRedirect("StudentMainPage.jsp");//跳转到登录过后的主页
             }else {//账号不存在或密码错误
                 login_message="账号不存在或密码错误";
                 System.out.println("账号不存在或密码错误");

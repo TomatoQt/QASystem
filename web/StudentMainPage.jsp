@@ -10,7 +10,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>问题主页</title>
+    <title>学生主页</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
 </head>
@@ -19,7 +19,7 @@
         <div class="fixed-top">
             <div class="collapse" id="navbarToggleExternalContent">
                 <div class="bg-dark p-4">
-                    <h5 class="text-white h4">Collapsed content</h5>
+                    <h5 class="text-white h4">${sessionScope.userType}&nbsp;&nbsp;&nbsp;${sessionScope.user.name}</h5>
                     <span class="text-muted">Toggleable via the navbar brand.</span>
                 </div>
             </div>
@@ -30,7 +30,10 @@
                 <div class="d-inline-block">
                     <ul class="nav">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">提问</a>
+                            <a class="nav-link active" href="StudentMainPage.jsp">主页</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="newQuestion.jsp">提问</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">我的</a>

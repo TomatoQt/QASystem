@@ -97,20 +97,6 @@
                                 </div>
                             </form>
                         </div>
-                        <!--                        <div class="hero-content-wrap flex flex-column justify-content-center align-items-start">-->
-                        <!--                            <header class="entry-header">-->
-                        <!--                                <h4>开始在线问答</h4>-->
-                        <!--                                <h1>在线<br/>问答系统</h1>-->
-                        <!--                            </header>&lt;!&ndash; .entry-header &ndash;&gt;-->
-
-                        <!--                            <div class="entry-content">-->
-                        <!--                                <p>QASystem 是一款致力于方便教师解决学生的问题的系统，包含以问答为核心的诸多功能</p>-->
-                        <!--                            </div>&lt;!&ndash; .entry-content &ndash;&gt;-->
-
-                        <!--                            <footer class="entry-footer read-more">-->
-                        <!--                                <a href="#">了解更多</a>-->
-                        <!--                            </footer>&lt;!&ndash; .entry-footer &ndash;&gt;-->
-                        <!--                        </div>&lt;!&ndash; .hero-content-wrap &ndash;&gt;-->
                     </div><!-- .col -->
                 </div><!-- .row -->
             </div><!-- .container -->
