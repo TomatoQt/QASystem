@@ -1,9 +1,11 @@
 package Servlet;
 
 import Bean.Admin;
+import Bean.Question;
 import Bean.Student;
 import Bean.Teacher;
 import Dao.AdminDao;
+import Dao.QuestionDao;
 import Dao.StudentDao;
 import Dao.TeacherDao;
 
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/userLogin"})
 public class LoginServlet extends HttpServlet {
@@ -30,7 +33,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("user",student);
                 request.getSession().setAttribute("userType","student");
                 login_message="学生登录成功";
-                response.sendRedirect("studentPage.jsp");//跳转到登录过后的主页
+                response.sendRedirect("QuestionPage.jsp");//跳转到登录过后的主页
             }else {//账号不存在或密码错误
                 login_message="账号不存在或密码错误";
                 System.out.println("账号不存在或密码错误");

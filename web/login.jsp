@@ -92,7 +92,7 @@
                                         <button type="submit" class="btn btn-primary">登录</button>
                                     </div>
                                     <div class="col-4 text-right offset-8">
-                                        <a href="#">马上注册</a>
+                                        <a href="register.jsp">马上注册</a>
                                     </div>
                                 </div>
                             </form>
