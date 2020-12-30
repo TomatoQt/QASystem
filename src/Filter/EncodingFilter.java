@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 
-@WebFilter(filterName = "EncodingFilter")
+@WebFilter(filterName = "EncodingFilter", urlPatterns = {"/*"})
 public class EncodingFilter extends HttpFilter implements Filter {
     public void destroy() {
         System.out.println("EncodingFilter destroyed.");
