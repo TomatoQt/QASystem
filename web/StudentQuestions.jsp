@@ -74,7 +74,7 @@
                     <div class="card-body">
                         <h5 class="card-title">${Q.title}</h5>
                         <p class="card-text">${Q.content}</p>
-                        <a href="#" class="btn btn-primary">查看问题</a>
+                        <a href="QuestionAnswer.do?Q_id=${Q.id}" class="btn btn-primary">查看问题</a>
                     </div>
                 </div>
             </c:forEach>
