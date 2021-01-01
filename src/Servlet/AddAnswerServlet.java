@@ -20,7 +20,7 @@ public class AddAnswerServlet extends HttpServlet {
         if (userType.equals("student")){
             stuAnswerDao dao=new stuAnswerDao();
             String stuA_id=Integer.toString(dao.getBigId()+1);
-            String q_id=((Question)request.getAttribute("question")).getId();
+            String q_id=request.getParameter("q_id");
             String stu_id=((Student)request.getSession().getAttribute("user")).getId();
             String stuA_content=request.getParameter("stuA_content");
             int stuA_nice=0;

@@ -10,6 +10,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="5">
     <title>问题</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
@@ -32,6 +33,7 @@
                         <label for="exampleFormControlTextarea1">输入你的回答</label>
                         <textarea name="stuA_content" class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
                     </div>
+                    <input type="hidden" name="q_id" value="${requestScope.question.id}">
                 </form>
             </div>
             <div class="modal-footer">
