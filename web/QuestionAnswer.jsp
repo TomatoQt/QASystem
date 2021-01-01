@@ -13,8 +13,34 @@
     <title>问题</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
+    <script language="javascript">function fsubmit(obj){obj.submit();}</script>
 </head>
 <body class="myBackground">
+<!-- Modal -->
+<div class="modal fade" id="newAnswer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">撰写回答</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="answer_content" action="answer.do" method="post">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">输入你的回答</label>
+                        <textarea name="stuA_content" class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:fsubmit(document.answer_content);">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="fixed-top">
         <div class="collapse" id="navbarToggleExternalContent">
@@ -74,7 +100,10 @@
                 <div class="card-body">
                     <h5 class="card-title">${requestScope.question.title}</h5>
                     <p class="card-text">${requestScope.question.content}</p>
-                    <a class="btn btn-outline-info d-inline-block" type="button" href="answer.do?Q_id=${requestScope.question.id}">我来答</a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAnswer">
+                        我来答
+                    </button>
                 </div>
             </div>
             <!--教师答案-->

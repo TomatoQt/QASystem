@@ -1,5 +1,6 @@
 package Dao;
 
+import Bean.StuAnswer;
 import Bean.teaAnswer;
 
 import java.sql.Connection;
@@ -144,6 +145,43 @@ public class teaAnsDao extends BaseDao{
         }catch (SQLException se){
             se.printStackTrace();
             return null;
+        }
+    }
+
+    //获取id最大的教师回答id
+    public int getBigId(){
+        String sql="SELECT * FROM teaAnswer";
+        ArrayList<teaAnswer> tAList=new ArrayList<teaAnswer>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                teaAnswer tA=new teaAnswer();
+                tA.setTeaA_id(rst.getString("teaA_id"));
+                tA.setQ_id(rst.getString("q_id"));
+                tA.setTea_id(rst.getString("tea_id"));
+                tA.setTeaA_content(rst.getString("teaA_content"));
+                tA.setTeaA_nice(rst.getInt("teaA_nice"));
+                tA.setTeaA_tread(rst.getInt("teaA_tread"));
+                tA.setTeaA_time(rst.getDate("teaA_time"));
+                tAList.add(tA);
+            }
+            connection.close();
+            if (tAList.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (teaAnswer TA : tAList) {
+                    int temp = Integer.parseInt(TA.getTeaA_id().substring(1));//跳过第一个字符,如Q1
+                    if (temp > big)
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
         }
     }
 }
