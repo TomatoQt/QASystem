@@ -1,6 +1,7 @@
 package Dao;
 
 import Bean.Notice;
+import Bean.Question;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -106,6 +107,37 @@ public class NoticeDao extends BaseDao{
         }catch (SQLException se){
             se.printStackTrace();
             return null;
+        }
+    }
+
+    //获取最大的notice 编号
+    public int getBigId(){
+        String sql="SELECT * FROM Notice";
+        ArrayList<Notice> noticeList=new ArrayList<Notice>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                Notice notice=new Notice();
+                notice.setId(rst.getString("notice_id"));
+                noticeList.add(notice);
+            }
+            connection.close();
+            if (noticeList.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (Notice notice : noticeList) {
+                    int temp = Integer.parseInt(notice.getId().substring(1));//跳过第一个字符,如N1
+                    if (temp > big)
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
         }
     }
 }

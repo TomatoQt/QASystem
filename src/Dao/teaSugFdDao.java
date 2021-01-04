@@ -1,5 +1,6 @@
 package Dao;
 
+import Bean.teaSuggestion;
 import Bean.teaSuggestionFeedback;
 
 import java.sql.Connection;
@@ -132,6 +133,36 @@ public class teaSugFdDao extends BaseDao{
         }catch (SQLException se){
             se.printStackTrace();
             return null;
+        }
+    }
+
+    public int getBigId(){
+        String sql="SELECT * FROM teaSuggestionFeedback";
+        ArrayList<teaSuggestionFeedback> teaSuggestionFeedbacks=new ArrayList<teaSuggestionFeedback>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                teaSuggestionFeedback tsfd=new teaSuggestionFeedback();
+                tsfd.setTeaSugFd_id(rst.getString("teaSugFd_id"));
+                teaSuggestionFeedbacks.add(tsfd);
+            }
+            connection.close();
+            if (teaSuggestionFeedbacks.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (teaSuggestionFeedback item : teaSuggestionFeedbacks) {
+                    int temp = Integer.parseInt(item.getTeaSugFd_id().substring(3));
+                    if (temp > big)
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
         }
     }
 }

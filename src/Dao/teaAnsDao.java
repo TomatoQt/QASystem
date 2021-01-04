@@ -173,7 +173,7 @@ public class teaAnsDao extends BaseDao{
                 return 0;
             }else {
                 for (teaAnswer TA : tAList) {
-                    int temp = Integer.parseInt(TA.getTeaA_id().substring(1));//跳过第一个字符,如Q1
+                    int temp = Integer.parseInt(TA.getTeaA_id().substring(2));
                     if (temp > big)
                         big = temp;
                 }

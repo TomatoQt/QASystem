@@ -1,5 +1,6 @@
 package Dao;
 
+import Bean.ReAskStudent;
 import Bean.ReAskTeacher;
 
 import java.sql.Connection;
@@ -101,6 +102,35 @@ public class ReAskTeacherDao extends BaseDao{
         }catch (SQLException se){
             se.printStackTrace();
             return null;
+        }
+    }
+
+    public int getBigId(){
+        String sql="SELECT * FROM ReAskTeacher";
+        ArrayList<ReAskTeacher> reAskTeachers=new ArrayList<ReAskTeacher>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                ReAskTeacher reAskTeacher=new ReAskTeacher();
+                reAskTeacher.setrAskTea_id(rst.getString("rAskTea_id"));
+                reAskTeachers.add(reAskTeacher);
+            }
+            connection.close();
+            if (reAskTeachers.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (ReAskTeacher item : reAskTeachers) {
+                    int temp = Integer.parseInt(item.getrAskTea_id().substring(3));
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
         }
     }
 }

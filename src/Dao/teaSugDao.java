@@ -1,5 +1,6 @@
 package Dao;
 
+import Bean.StuSuggestion;
 import Bean.teaSuggestion;
 
 import java.sql.Connection;
@@ -107,6 +108,36 @@ public class teaSugDao extends BaseDao{
         }catch (SQLException se){
             se.printStackTrace();
             return null;
+        }
+    }
+
+    public int getBigId(){
+        String sql="SELECT * FROM teaSuggestion";
+        ArrayList<teaSuggestion> teaSuggestions=new ArrayList<teaSuggestion>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                teaSuggestion ts=new teaSuggestion();
+                ts.setTeaS_id(rst.getString("teaS_id"));
+                teaSuggestions.add(ts);
+            }
+            connection.close();
+            if (teaSuggestions.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (teaSuggestion item : teaSuggestions) {
+                    int temp = Integer.parseInt(item.getTeaS_id().substring(2));
+                    if (temp > big)
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
         }
     }
 }

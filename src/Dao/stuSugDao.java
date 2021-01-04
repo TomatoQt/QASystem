@@ -1,5 +1,6 @@
 package Dao;
 
+import Bean.ReAskTeacher;
 import Bean.StuSuggestion;
 
 import java.sql.Connection;
@@ -107,6 +108,36 @@ public class stuSugDao extends BaseDao{
         }catch (SQLException se){
             se.printStackTrace();
             return null;
+        }
+    }
+
+    public int getBigId(){
+        String sql="SELECT * FROM stuSuggestion";
+        ArrayList<StuSuggestion> stuSuggestions=new ArrayList<StuSuggestion>();
+        int big=-1;
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()){
+                StuSuggestion stuSuggestion=new StuSuggestion();
+                stuSuggestion.setStuS_id(rst.getString("stuS_id"));
+                stuSuggestions.add(stuSuggestion);
+            }
+            connection.close();
+            if (stuSuggestions.size()==0){//问题库中没有问题
+                return 0;
+            }else {
+                for (StuSuggestion item : stuSuggestions) {
+                    int temp = Integer.parseInt(item.getStuS_id().substring(2));
+                    if (temp > big)
+                        big = temp;
+                }
+                return big;
+            }
+        }catch (SQLException se){
+            se.printStackTrace();
+            return big;
         }
     }
 }
