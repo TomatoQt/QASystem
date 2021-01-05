@@ -18,7 +18,7 @@ public class ReAskTeacherDao extends BaseDao{
             pstmt.setString(1,reAskTeacher.getrAskTea_id());
             pstmt.setString(2,reAskTeacher.getTeaA_id());
             pstmt.setString(3,reAskTeacher.getrAskTea_content());
-            pstmt.setDate(4,reAskTeacher.getrAskTea_time());
+            pstmt.setString(4,reAskTeacher.getrAskTea_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -50,7 +50,7 @@ public class ReAskTeacherDao extends BaseDao{
             PreparedStatement pstmt=connection.prepareStatement(sql);
             pstmt.setString(1,reAskTeacher.getTeaA_id());
             pstmt.setString(2,reAskTeacher.getrAskTea_content());
-            pstmt.setDate(3,reAskTeacher.getrAskTea_time());
+            pstmt.setString(3,reAskTeacher.getrAskTea_time());
             pstmt.setString(4,reAskTeacher.getrAskTea_id());
             pstmt.executeUpdate();
             return true;
@@ -72,7 +72,7 @@ public class ReAskTeacherDao extends BaseDao{
                 reAskTeacher.setrAskTea_id(rst.getString("rAskTea_id"));
                 reAskTeacher.setTeaA_id(rst.getString("teaA_id"));
                 reAskTeacher.setrAskTea_content(rst.getString("rAskTea_content"));
-                reAskTeacher.setrAskTea_time(rst.getDate("rAskTea_time"));
+                reAskTeacher.setrAskTea_time(rst.getString("rAskTea_time"));
             }
             connection.close();
             return reAskTeacher;
@@ -95,7 +95,7 @@ public class ReAskTeacherDao extends BaseDao{
                 reAskTeacher.setrAskTea_id(rst.getString("rAskTea_id"));
                 reAskTeacher.setTeaA_id(rst.getString("teaA_id"));
                 reAskTeacher.setrAskTea_content(rst.getString("rAskTea_content"));
-                reAskTeacher.setrAskTea_time(rst.getDate("rAskTea_time"));
+                reAskTeacher.setrAskTea_time(rst.getString("rAskTea_time"));
             }
             connection.close();
             return rAskTeaList;

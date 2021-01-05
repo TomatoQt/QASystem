@@ -19,7 +19,7 @@ public class stuSugDao extends BaseDao{
             pstmt.setString(2,stuSuggestion.getStu_id());
             pstmt.setString(3,stuSuggestion.getStuS_title());
             pstmt.setString(4,stuSuggestion.getStuS_content());
-            pstmt.setDate(5,stuSuggestion.getStuS_time());
+            pstmt.setString(5,stuSuggestion.getStuS_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -52,7 +52,7 @@ public class stuSugDao extends BaseDao{
             pstmt.setString(1,stuSuggestion.getStu_id());
             pstmt.setString(2,stuSuggestion.getStuS_title());
             pstmt.setString(3,stuSuggestion.getStuS_content());
-            pstmt.setDate(4,stuSuggestion.getStuS_time());
+            pstmt.setString(4,stuSuggestion.getStuS_time());
             pstmt.setString(5,stuSuggestion.getStuS_id());
             pstmt.executeUpdate();
             connection.close();
@@ -76,7 +76,7 @@ public class stuSugDao extends BaseDao{
                 stuSuggestion.setStu_id(rst.getString("stu_id"));
                 stuSuggestion.setStuS_title(rst.getString("stuS_title"));
                 stuSuggestion.setStuS_content(rst.getString("stuS_content"));
-                stuSuggestion.setStuS_time(rst.getDate("stuS_time"));
+                stuSuggestion.setStuS_time(rst.getString("stuS_time"));
             }
             connection.close();
             return stuSuggestion;
@@ -100,7 +100,7 @@ public class stuSugDao extends BaseDao{
                 stuSuggestion.setStu_id(rst.getString("stu_id"));
                 stuSuggestion.setStuS_title(rst.getString("stuS_title"));
                 stuSuggestion.setStuS_content(rst.getString("stuS_content"));
-                stuSuggestion.setStuS_time(rst.getDate("stuS_time"));
+                stuSuggestion.setStuS_time(rst.getString("stuS_time"));
                 stuSugList.add(stuSuggestion);
             }
             connection.close();

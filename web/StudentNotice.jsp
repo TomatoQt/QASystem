@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: TomatoMan
   Date: 2020/12/30
-  Time: 19:42
+  Time: 18:48
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的提问</title>
+    <title>公告信息</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
 </head>
@@ -65,17 +65,13 @@
     </div>
     <%--下部主体--%>
     <div class="mt-lg-5 pt-lg-5">
-        <div>
-            <h3 class="pt-2" style="color: #e9ecef">我的提问<span class="badge badge-secondary ml-1">Q</span></h3>
-            <c:forEach items="${requestScope.questions}" var="Q">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        提问者
-                    </div>
+        <div class="text-center">
+            <c:forEach items="${requestScope.notices}" var="notice">
+                <div class="card bg-light mb-3 d-inline-block" style="max-width: 18rem;">
+                    <div class="card-header">{notice.}</div>
                     <div class="card-body">
-                        <h5 class="card-title">${Q.title}</h5>
-                        <p class="card-text">${Q.content}</p>
-                        <a href="QuestionAnswer.do?Q_id=${Q.id}" class="btn btn-primary">查看问题</a>
+                        <h5 class="card-title">Light card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                 </div>
             </c:forEach>
@@ -89,3 +85,4 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
+

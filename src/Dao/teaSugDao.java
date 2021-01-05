@@ -19,7 +19,7 @@ public class teaSugDao extends BaseDao{
             pstmt.setString(2,tS.getTea_id());
             pstmt.setString(3,tS.getTeaS_title());
             pstmt.setString(4,tS.getTeaS_content());
-            pstmt.setDate(5,tS.getTeaS_time());
+            pstmt.setString(5,tS.getTeaS_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -52,7 +52,7 @@ public class teaSugDao extends BaseDao{
             pstmt.setString(1, tS.getTea_id());
             pstmt.setString(2,tS.getTeaS_title());
             pstmt.setString(3,tS.getTeaS_content());
-            pstmt.setDate(4,tS.getTeaS_time());
+            pstmt.setString(4,tS.getTeaS_time());
             pstmt.setString(5, tS.getTeaS_id());
             pstmt.executeUpdate();
             connection.close();
@@ -76,7 +76,7 @@ public class teaSugDao extends BaseDao{
                 tS.setTea_id(rst.getString("tea_id"));
                 tS.setTeaS_title(rst.getString("teaS_title"));
                 tS.setTeaS_content(rst.getString("teaS_content"));
-                tS.setTeaS_time(rst.getDate("teaS_time"));
+                tS.setTeaS_time(rst.getString("teaS_time"));
             }
             connection.close();
             return tS;
@@ -100,7 +100,7 @@ public class teaSugDao extends BaseDao{
                 tS.setTea_id(rst.getString("tea_id"));
                 tS.setTeaS_title(rst.getString("teaS_title"));
                 tS.setTeaS_content(rst.getString("teaS_content"));
-                tS.setTeaS_time(rst.getDate("teaS_time"));
+                tS.setTeaS_time(rst.getString("teaS_time"));
                 tSList.add(tS);
             }
             connection.close();

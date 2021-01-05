@@ -1,7 +1,5 @@
 package Bean;
 
-import java.sql.Date;
-
 public class Student {
     private String id;
     private String nickname;
@@ -11,11 +9,11 @@ public class Student {
     private Boolean sex;
     private String email;
     private String idCard;
-    private Date recentSpeak;
+    private String recentSpeak;
 
     public Student(){}
 
-    public Student(String id, String nickname, String password, String name, String phone, Boolean sex, String email, String idCard, Date recentSpeak) {
+    public Student(String id, String nickname, String password, String name, String phone, Boolean sex, String email, String idCard, String recentSpeak) {
         this.id = id;
         this.nickname = nickname;
         this.password = password;
@@ -102,11 +100,11 @@ public class Student {
         this.idCard = idCard;
     }
 
-    public Date getRecentSpeak() {
+    public String getRecentSpeak() {
         return recentSpeak;
     }
 
-    public void setRecentSpeak(Date recentSpeak) {
+    public void setRecentSpeak(String recentSpeak) {
         this.recentSpeak = recentSpeak;
     }
 }

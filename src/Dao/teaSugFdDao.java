@@ -19,7 +19,7 @@ public class teaSugFdDao extends BaseDao{
             pstmt.setString(2, tSFd.getTeaS_id());
             pstmt.setString(3, tSFd.getAdm_id());
             pstmt.setString(4, tSFd.getTeaSugFd_content());
-            pstmt.setDate(5, tSFd.getTeaSugFd_time());
+            pstmt.setString(5, tSFd.getTeaSugFd_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -52,7 +52,7 @@ public class teaSugFdDao extends BaseDao{
             pstmt.setString(1, tSFd.getTeaS_id());
             pstmt.setString(2, tSFd.getAdm_id());
             pstmt.setString(3, tSFd.getTeaSugFd_content());
-            pstmt.setDate(4, tSFd.getTeaSugFd_time());
+            pstmt.setString(4, tSFd.getTeaSugFd_time());
             pstmt.setString(5, tSFd.getTeaSugFd_id());
             pstmt.executeUpdate();
             connection.close();
@@ -76,7 +76,7 @@ public class teaSugFdDao extends BaseDao{
                 tSFd.setTeaS_id(rst.getString("teaS_id"));
                 tSFd.setAdm_id(rst.getString("adm_id"));
                 tSFd.setTeaSugFd_content(rst.getString("teaSugFd_content"));
-                tSFd.setTeaSugFd_time(rst.getDate("teaSugFd_time"));
+                tSFd.setTeaSugFd_time(rst.getString("teaSugFd_time"));
             }
             connection.close();
             return tSFd;
@@ -100,7 +100,7 @@ public class teaSugFdDao extends BaseDao{
                 tSFd.setTeaS_id(rst.getString("teaS_id"));
                 tSFd.setAdm_id(rst.getString("adm_id"));
                 tSFd.setTeaSugFd_content(rst.getString("teaSugFd_content"));
-                tSFd.setTeaSugFd_time(rst.getDate("teaSugFd_time"));
+                tSFd.setTeaSugFd_time(rst.getString("teaSugFd_time"));
                 tSFdList.add(tSFd);
             }
             connection.close();
@@ -125,7 +125,7 @@ public class teaSugFdDao extends BaseDao{
                 tSFd.setTeaS_id(rst.getString("teaS_id"));
                 tSFd.setAdm_id(rst.getString("adm_id"));
                 tSFd.setTeaSugFd_content(rst.getString("teaSugFd_content"));
-                tSFd.setTeaSugFd_time(rst.getDate("teaSugFd_time"));
+                tSFd.setTeaSugFd_time(rst.getString("teaSugFd_time"));
                 tSFdList.add(tSFd);
             }
             connection.close();

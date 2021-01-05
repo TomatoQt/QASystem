@@ -1,18 +1,16 @@
 package Bean;
 
-import java.sql.Date;
-
 public class Question {
     private String id;
     private String stu_id;
     private String title;
     private String content;
     private int click;
-    private Date time;
+    private String time;
 
     public Question() {}
 
-    public Question(String id, String stu_id, String title, String content, int click, Date time) {
+    public Question(String id, String stu_id, String title, String content, int click, String time) {
         this.id = id;
         this.stu_id = stu_id;
         this.title = title;
@@ -61,11 +59,11 @@ public class Question {
         this.click = click;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 }

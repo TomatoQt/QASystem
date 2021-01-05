@@ -1,18 +1,19 @@
 package Bean;
 
-import java.sql.Date;
-
-public class ReAnswerStudent {
+public class ReAnswerStudent extends CompareStu{
     private String rAnsStu_id;
     private String stuA_id;
     private String rAnsStu_content;
-    private Date rAnsStu_time;
+    private String rAnsStu_time;
     private int rAnsStu_nice;
     private int rAnsStu_tread;
 
-    public ReAnswerStudent() {}
+    public ReAnswerStudent(){
+        super();
+    }
 
-    public ReAnswerStudent(String rAnsStu_id, String stuA_id, String rAnsStu_content, Date rAnsStu_time, int rAnsStu_nice, int rAnsStu_tread) {
+    public ReAnswerStudent(String rAnsStu_id, String stuA_id, String rAnsStu_content, String rAnsStu_time, int rAnsStu_nice, int rAnsStu_tread) {
+        super(rAnsStu_time);
         this.rAnsStu_id = rAnsStu_id;
         this.stuA_id = stuA_id;
         this.rAnsStu_content = rAnsStu_content;
@@ -45,12 +46,13 @@ public class ReAnswerStudent {
         this.rAnsStu_content = rAnsStu_content;
     }
 
-    public Date getrAnsStu_time() {
+    public String getrAnsStu_time() {
         return rAnsStu_time;
     }
 
-    public void setrAnsStu_time(Date rAnsStu_time) {
+    public void setrAnsStu_time(String rAnsStu_time) {
         this.rAnsStu_time = rAnsStu_time;
+        super.setDate(rAnsStu_time);
     }
 
     public int getrAnsStu_nice() {

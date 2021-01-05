@@ -18,7 +18,7 @@ public class NoticeDao extends BaseDao{
             pstmt.setString(1,notice.getId());
             pstmt.setString(2,notice.getTitle());
             pstmt.setString(3,notice.getContent());
-            pstmt.setDate(4,notice.getTime());
+            pstmt.setString(4,notice.getTime());
             pstmt.setString(5,notice.getAdm_id());
             pstmt.executeUpdate();
             connection.close();
@@ -51,7 +51,7 @@ public class NoticeDao extends BaseDao{
             PreparedStatement pstmt=connection.prepareStatement(sql);
             pstmt.setString(1,notice.getTitle());
             pstmt.setString(2,notice.getContent());
-            pstmt.setDate(3,notice.getTime());
+            pstmt.setString(3,notice.getTime());
             pstmt.setString(4,notice.getAdm_id());
             pstmt.setString(5,notice.getId());
             pstmt.executeUpdate();
@@ -75,7 +75,7 @@ public class NoticeDao extends BaseDao{
                 notice.setId(rst.getString("notice_id"));
                 notice.setTitle(rst.getString("notice_title"));
                 notice.setContent(rst.getString("notice_content"));
-                notice.setTime(rst.getDate("notice_time"));
+                notice.setTime(rst.getString("notice_time"));
                 notice.setAdm_id(rst.getString("adm_id"));
             }
             connection.close();
@@ -98,7 +98,7 @@ public class NoticeDao extends BaseDao{
                 notice.setId(rst.getString("notice_id"));
                 notice.setTitle(rst.getString("notice_title"));
                 notice.setContent(rst.getString("notice_content"));
-                notice.setTime(rst.getDate("notice_time"));
+                notice.setTime(rst.getString("notice_time"));
                 notice.setAdm_id(rst.getString("adm_id"));
                 noticeList.add(notice);
             }

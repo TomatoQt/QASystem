@@ -20,7 +20,7 @@ public class stuSugFdDao extends BaseDao{
             pstmt.setString(2,stuSugFd.getStuS_id());
             pstmt.setString(3,stuSugFd.getAdm_id());
             pstmt.setString(4,stuSugFd.getStuSugFd_content());
-            pstmt.setDate(5,stuSugFd.getStuSugFd_time());
+            pstmt.setString(5,stuSugFd.getStuSugFd_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -53,7 +53,7 @@ public class stuSugFdDao extends BaseDao{
             pstmt.setString(1,stuSugFd.getStuS_id());
             pstmt.setString(2,stuSugFd.getAdm_id());
             pstmt.setString(3,stuSugFd.getStuSugFd_content());
-            pstmt.setDate(4,stuSugFd.getStuSugFd_time());
+            pstmt.setString(4,stuSugFd.getStuSugFd_time());
             pstmt.setString(5,stuSugFd.getStuSugFd_id());
             pstmt.executeUpdate();
             connection.close();
@@ -77,7 +77,7 @@ public class stuSugFdDao extends BaseDao{
                 stuSugFd.setStuS_id(rst.getString("stuS_id"));
                 stuSugFd.setAdm_id(rst.getString("adm_id"));
                 stuSugFd.setStuSugFd_content(rst.getString("stuSugFd_content"));
-                stuSugFd.setStuSugFd_time(rst.getDate("stuSugFd_time"));
+                stuSugFd.setStuSugFd_time(rst.getString("stuSugFd_time"));
             }
             connection.close();
             return stuSugFd;
@@ -102,7 +102,7 @@ public class stuSugFdDao extends BaseDao{
                 stuSugFd.setStuS_id(rst.getString("stuS_id"));
                 stuSugFd.setAdm_id(rst.getString("adm_id"));
                 stuSugFd.setStuSugFd_content(rst.getString("stuSugFd_content"));
-                stuSugFd.setStuSugFd_time(rst.getDate("stuSugFd_time"));
+                stuSugFd.setStuSugFd_time(rst.getString("stuSugFd_time"));
                 stuSugFdList.add(stuSugFd);
             }
             connection.close();
@@ -128,7 +128,7 @@ public class stuSugFdDao extends BaseDao{
                 stuSugFd.setStuS_id(rst.getString("stuS_id"));
                 stuSugFd.setAdm_id(rst.getString("adm_id"));
                 stuSugFd.setStuSugFd_content(rst.getString("stuSugFd_content"));
-                stuSugFd.setStuSugFd_time(rst.getDate("stuSugFd_time"));
+                stuSugFd.setStuSugFd_time(rst.getString("stuSugFd_time"));
                 stuSugFdList.add(stuSugFd);
             }
             connection.close();

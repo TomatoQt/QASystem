@@ -21,7 +21,7 @@ public class teaAnsDao extends BaseDao{
             pstmt.setString(4,tA.getTeaA_content());
             pstmt.setInt(5,tA.getTeaA_nice());
             pstmt.setInt(6,tA.getTeaA_tread());
-            pstmt.setDate(7,tA.getTeaA_time());
+            pstmt.setString(7,tA.getTeaA_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -56,7 +56,7 @@ public class teaAnsDao extends BaseDao{
             pstmt.setString(3,tA.getTeaA_content());
             pstmt.setInt(4,tA.getTeaA_nice());
             pstmt.setInt(5,tA.getTeaA_tread());
-            pstmt.setDate(6,tA.getTeaA_time());
+            pstmt.setString(6,tA.getTeaA_time());
             pstmt.setString(7,tA.getTeaA_id());
             pstmt.executeUpdate();
             connection.close();
@@ -82,7 +82,7 @@ public class teaAnsDao extends BaseDao{
                 tA.setTeaA_content(rst.getString("teaA_content"));
                 tA.setTeaA_nice(rst.getInt("teaA_nice"));
                 tA.setTeaA_tread(rst.getInt("teaA_tread"));
-                tA.setTeaA_time(rst.getDate("teaA_time"));
+                tA.setTeaA_time(rst.getString("teaA_time"));
             }
             connection.close();
             return tA;
@@ -109,7 +109,7 @@ public class teaAnsDao extends BaseDao{
                 tA.setTeaA_content(rst.getString("teaA_content"));
                 tA.setTeaA_nice(rst.getInt("teaA_nice"));
                 tA.setTeaA_tread(rst.getInt("teaA_tread"));
-                tA.setTeaA_time(rst.getDate("teaA_time"));
+                tA.setTeaA_time(rst.getString("teaA_time"));
                 tAList.add(tA);
             }
             connection.close();
@@ -137,7 +137,7 @@ public class teaAnsDao extends BaseDao{
                 tA.setTeaA_content(rst.getString("teaA_content"));
                 tA.setTeaA_nice(rst.getInt("teaA_nice"));
                 tA.setTeaA_tread(rst.getInt("teaA_tread"));
-                tA.setTeaA_time(rst.getDate("teaA_time"));
+                tA.setTeaA_time(rst.getString("teaA_time"));
                 tAList.add(tA);
             }
             connection.close();
@@ -165,7 +165,7 @@ public class teaAnsDao extends BaseDao{
                 tA.setTeaA_content(rst.getString("teaA_content"));
                 tA.setTeaA_nice(rst.getInt("teaA_nice"));
                 tA.setTeaA_tread(rst.getInt("teaA_tread"));
-                tA.setTeaA_time(rst.getDate("teaA_time"));
+                tA.setTeaA_time(rst.getString("teaA_time"));
                 tAList.add(tA);
             }
             connection.close();

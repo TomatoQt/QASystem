@@ -1,17 +1,15 @@
 package Bean;
 
-import java.sql.Date;
-
 public class Notice {
     private String id;
     private String title;
     private String content;
-    private Date time;
+    private String time;
     private String adm_id;
 
     public Notice() {}
 
-    public Notice(String id, String title, String content, Date time, String adm_id) {
+    public Notice(String id, String title, String content, String time, String adm_id) {
         this.id = id;
         this.title = title;
         this.content = content;
@@ -43,11 +41,11 @@ public class Notice {
         this.content = content;
     }
 
-    public Date getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

@@ -5,6 +5,7 @@ import Bean.stuSuggestionFeedback;
 import Bean.teaSuggestionFeedback;
 import Dao.stuSugFdDao;
 import Dao.teaSugFdDao;
+import utils.TimeConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 
 @WebServlet(name = "AddSugFdServlet")
 public class AddSugFdServlet extends HttpServlet {
@@ -24,8 +25,8 @@ public class AddSugFdServlet extends HttpServlet {
             String stuS_id=request.getParameter("stuS_id");
             String adm_id=((Admin)request.getSession().getAttribute("user")).getId();
             String stuSugFd_content=request.getParameter("stuSugFd_content");
-            Date stuSugFd_time=new Date(System.currentTimeMillis());
-            stuSuggestionFeedback fd=new stuSuggestionFeedback(stuSugFd_id,stuS_id,adm_id,stuSugFd_content,stuSugFd_time);
+            Date stuSugFd_time=new Date();
+            stuSuggestionFeedback fd=new stuSuggestionFeedback(stuSugFd_id,stuS_id,adm_id,stuSugFd_content, TimeConverter.getDate_Str(stuSugFd_time));
             stuSugFdDao dao=new stuSugFdDao();
             if (dao.addStuSugFd(fd)){
                 response.sendRedirect("");//add student suggestion feedback page
@@ -37,8 +38,8 @@ public class AddSugFdServlet extends HttpServlet {
             String teaS_id=request.getParameter("teaS_id");
             String adm_id=((Admin)request.getSession().getAttribute("user")).getId();
             String teaSugFd_content=request.getParameter("teaSugFd_content");
-            Date teaSugFd_time=new Date(System.currentTimeMillis());
-            teaSuggestionFeedback fd=new teaSuggestionFeedback(teaSugFd_id,teaS_id,adm_id,teaSugFd_content,teaSugFd_time);
+            Date teaSugFd_time=new Date();
+            teaSuggestionFeedback fd=new teaSuggestionFeedback(teaSugFd_id,teaS_id,adm_id,teaSugFd_content,TimeConverter.getDate_Str(teaSugFd_time));
             teaSugFdDao dao=new teaSugFdDao();
             if (dao.addTeaSugFd(fd)){
                 response.sendRedirect("");//add teacher suggestion feedback page

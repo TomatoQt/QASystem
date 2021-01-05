@@ -18,7 +18,7 @@ public class ReAskStudentDao extends BaseDao{
             pstmt.setString(1,reAskStudent.getrAskStu_id());
             pstmt.setString(2,reAskStudent.getStuA_id());
             pstmt.setString(3,reAskStudent.getrAskStu_content());
-            pstmt.setDate(4,reAskStudent.getrAskStu_time());
+            pstmt.setString(4,reAskStudent.getrAskStu_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -50,7 +50,7 @@ public class ReAskStudentDao extends BaseDao{
             PreparedStatement pstmt=connection.prepareStatement(sql);
             pstmt.setString(1,reAskStudent.getStuA_id());
             pstmt.setString(2,reAskStudent.getrAskStu_content());
-            pstmt.setDate(3,reAskStudent.getrAskStu_time());
+            pstmt.setString(3,reAskStudent.getrAskStu_time());
             pstmt.setString(4,reAskStudent.getrAskStu_id());
             pstmt.executeUpdate();
             return true;
@@ -72,7 +72,7 @@ public class ReAskStudentDao extends BaseDao{
                 reAskStudent.setrAskStu_id(rst.getString("rAskStu_id"));
                 reAskStudent.setStuA_id(rst.getString("stuA_id"));
                 reAskStudent.setrAskStu_content(rst.getString("rAskStu_content"));
-                reAskStudent.setrAskStu_time(rst.getDate("rAskStu_time"));
+                reAskStudent.setrAskStu_time(rst.getString("rAskStu_time"));
             }
             connection.close();
             return reAskStudent;
@@ -95,7 +95,7 @@ public class ReAskStudentDao extends BaseDao{
                 reAskStudent.setrAskStu_id(rst.getString("rAskStu_id"));
                 reAskStudent.setStuA_id(rst.getString("stuA_id"));
                 reAskStudent.setrAskStu_content(rst.getString("rAskStu_content"));
-                reAskStudent.setrAskStu_time(rst.getDate("rAskStu_time"));
+                reAskStudent.setrAskStu_time(rst.getString("rAskStu_time"));
                 rAskStuList.add(reAskStudent);
             }
             connection.close();

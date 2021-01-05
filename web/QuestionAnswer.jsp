@@ -10,14 +10,14 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5">
+<%--    <meta http-equiv="refresh" content="5">--%>
     <title>问题</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
     <script language="javascript">function fsubmit(obj){obj.submit();}</script>
 </head>
 <body class="myBackground">
-<!-- Modal -->
+<!-- Modal 回答问题 -->
 <div class="modal fade" id="newAnswer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -39,6 +39,58 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
                 <button type="button" class="btn btn-primary" onclick="javascript:fsubmit(document.answer_content);">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal 新增学生追问 -->
+<div class="modal fade" id="newRKS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="reask_content" action="addReAsk.do" method="post">
+                    <div class="form-group">
+                        <label>输入你的回答</label>
+                        <textarea name="ReAnswer_content" class="form-control" rows="8"></textarea>
+                    </div>
+                    <input type="hidden" id="Ask_id" name="Ask_id" value="">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:fsubmit(document.reask_content);">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal 新增学生复答 -->
+<div class="modal fade" id="newRAS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="reanswer_content" action="addReAns.do" method="post">
+                    <div class="form-group">
+                        <label>输入你的回答</label>
+                        <textarea name="ReAnswer_content" class="form-control" rows="8"></textarea>
+                    </div>
+                    <input type="hidden" id="Answer_id" name="Answer_id" value="">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:fsubmit(document.reanswer_content);">提交</button>
             </div>
         </div>
     </div>
@@ -73,14 +125,15 @@
                                 <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
                                 <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
                                 <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
+                                <a class="btn dropdown-item" type="button" href="logout.do">退出登录</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="OfferSuggestion.jsp">提出建议</a>
+                        <a class="btn btn-outline-light mr-2" href="StudentOfferSuggestion.jsp">提出建议</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="Notice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light" href="StudentNotice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
                     </li>
                 </ul>
             </div>
@@ -133,18 +186,30 @@
             <h3 class="pt-2" style="color: #bd4147">学生解答<span class="badge badge-success ml-2">Student Answers</span></h3>
             <div class="accordion">
                 <c:forEach items="${requestScope.student_answers}" var="A" varStatus="status">
-                    <div class="card">
+                    <div class="card mb-2">
                         <div class="card-header">
                             <h2 class="mb-0">
                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    学生解答 #${status.count}
+                                    ${status.count}# 学生解答
                                 </button>
                             </h2>
                         </div>
 
                         <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
-                                    ${A.stuA_content}
+                                <p class="text-left">${A.stuA_content}</p>
+                            </div>
+                            <div class="card-footer">
+                                <c:if test="${sessionScope.user.id == requestScope.question.stu_id}">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRKS" value="${A.stuA_id}" onclick="setAskValue(this)">
+                                        追问
+                                    </button>
+                                </c:if>
+                                <c:if test="${A.stu_id == sessionScope.user.id}">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRAS" value="${A.stuA_id}" onclick="setAnswerValue(this)">
+                                        补充
+                                    </button>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -158,5 +223,6 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="js/myjs.js"></script>
 </body>
 </html>

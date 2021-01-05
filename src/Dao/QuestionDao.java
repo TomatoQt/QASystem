@@ -19,7 +19,7 @@ public class QuestionDao extends BaseDao{
             pstmt.setString(3,question.getTitle());
             pstmt.setString(4,question.getContent());
             pstmt.setInt(5,question.getClick());
-            pstmt.setDate(6,question.getTime());
+            pstmt.setString(6,question.getTime());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -53,7 +53,7 @@ public class QuestionDao extends BaseDao{
             pstmt.setString(2,question.getTitle());
             pstmt.setString(3,question.getContent());
             pstmt.setInt(4,question.getClick());
-            pstmt.setDate(5,question.getTime());
+            pstmt.setString(5,question.getTime());
             pstmt.setString(6,question.getId());
             pstmt.executeUpdate();
             connection.close();
@@ -78,7 +78,7 @@ public class QuestionDao extends BaseDao{
                 question.setTitle(rst.getString("q_title"));
                 question.setContent(rst.getString("q_content"));
                 question.setClick(rst.getInt("q_click"));
-                question.setTime(rst.getDate("q_time"));
+                question.setTime(rst.getString("q_time"));
             }
             connection.close();
             return question;
@@ -102,7 +102,7 @@ public class QuestionDao extends BaseDao{
                 question.setTitle(rst.getString("q_title"));
                 question.setContent(rst.getString("q_content"));
                 question.setClick(rst.getInt("q_click"));
-                question.setTime(rst.getDate("q_time"));
+                question.setTime(rst.getString("q_time"));
                 questionList.add(question);
             }
             connection.close();
@@ -128,7 +128,7 @@ public class QuestionDao extends BaseDao{
                 question.setTitle(rst.getString("q_title"));
                 question.setContent(rst.getString("q_content"));
                 question.setClick(rst.getInt("q_click"));
-                question.setTime(rst.getDate("q_time"));
+                question.setTime(rst.getString("q_time"));
                 questionList.add(question);
             }
             connection.close();
@@ -154,7 +154,7 @@ public class QuestionDao extends BaseDao{
                 question.setTitle(rst.getString("q_title"));
                 question.setContent(rst.getString("q_content"));
                 question.setClick(rst.getInt("q_click"));
-                question.setTime(rst.getDate("q_time"));
+                question.setTime(rst.getString("q_time"));
                 questionList.add(question);
             }
             connection.close();

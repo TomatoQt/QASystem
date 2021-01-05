@@ -4,6 +4,7 @@ import Bean.ReAskStudent;
 import Bean.ReAskTeacher;
 import Dao.ReAskStudentDao;
 import Dao.ReAskTeacherDao;
+import utils.TimeConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 
 @WebServlet(name = "AddReAskServlet")
 public class AddReAskServlet extends HttpServlet {
@@ -22,8 +23,8 @@ public class AddReAskServlet extends HttpServlet {
             String rAskStu_id=request.getParameter("rAskStu_id");
             String stuA_id=request.getParameter("stuA_id");
             String rAskStu_content=request.getParameter("rAskStu_content");
-            Date rAskStu_time=new Date(System.currentTimeMillis());
-            ReAskStudent reAskStudent=new ReAskStudent(rAskStu_id,stuA_id,rAskStu_content,rAskStu_time);
+            Date rAskStu_time=new Date();
+            ReAskStudent reAskStudent=new ReAskStudent(rAskStu_id,stuA_id,rAskStu_content, TimeConverter.getDate_Str(rAskStu_time));
             ReAskStudentDao dao=new ReAskStudentDao();
             if (dao.addRAskStu(reAskStudent)){
                 response.sendRedirect("");//add reask student page
@@ -34,8 +35,8 @@ public class AddReAskServlet extends HttpServlet {
             String rAskTea_id=request.getParameter("rAskTea_id");
             String teaA_id=request.getParameter("teaA_id");
             String rAskTea_content=request.getParameter("rAskTea_content");
-            Date rAskTea_time=new Date(System.currentTimeMillis());
-            ReAskTeacher reAskTeacher=new ReAskTeacher(rAskTea_id,teaA_id,rAskTea_content,rAskTea_time);
+            Date rAskTea_time=new Date();
+            ReAskTeacher reAskTeacher=new ReAskTeacher(rAskTea_id,teaA_id,rAskTea_content,TimeConverter.getDate_Str(rAskTea_time));
             ReAskTeacherDao dao=new ReAskTeacherDao();
             if (dao.addRAskTea(reAskTeacher)){
                 response.sendRedirect("");//add reask teacher page

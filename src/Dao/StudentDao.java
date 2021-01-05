@@ -22,7 +22,7 @@ public class StudentDao extends BaseDao{
             pstmt.setInt(6,student.getSex()?1:0);
             pstmt.setString(7,student.getEmail());
             pstmt.setString(8,student.getIdCard());
-            pstmt.setDate(9,student.getRecentSpeak());
+            pstmt.setString(9,student.getRecentSpeak());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -59,7 +59,7 @@ public class StudentDao extends BaseDao{
             pstmt.setInt(5,student.getSex()?1:0);
             pstmt.setString(6,student.getEmail());
             pstmt.setString(7,student.getIdCard());
-            pstmt.setDate(8,student.getRecentSpeak());
+            pstmt.setString(8,student.getRecentSpeak());
             pstmt.setString(9,student.getId());
             connection.close();
             return true;
@@ -86,7 +86,7 @@ public class StudentDao extends BaseDao{
                 student.setSex(rst.getBoolean("stu_sex"));//可能有问题
                 student.setEmail(rst.getString("stu_email"));
                 student.setIdCard(rst.getString("stu_idCard"));
-                student.setRecentSpeak(rst.getDate("stu_recentSpeak"));
+                student.setRecentSpeak(rst.getString("stu_recentSpeak"));
             }
             connection.close();
             return student;
@@ -113,7 +113,7 @@ public class StudentDao extends BaseDao{
                 student.setSex(rst.getBoolean("stu_sex"));//可能有问题
                 student.setEmail(rst.getString("stu_email"));
                 student.setIdCard(rst.getString("stu_idCard"));
-                student.setRecentSpeak(rst.getDate("stu_recentSpeak"));
+                student.setRecentSpeak(rst.getString("stu_recentSpeak"));
                 studentList.add(student);
             }
             connection.close();

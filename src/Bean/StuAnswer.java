@@ -1,7 +1,5 @@
 package Bean;
 
-import java.sql.Date;
-
 public class StuAnswer {
     private String stuA_id;
     private String q_id;
@@ -9,11 +7,11 @@ public class StuAnswer {
     private String stuA_content;
     private int stuA_nice;
     private int stuA_tread;
-    private Date stuA_time;
+    private String stuA_time;
 
     public StuAnswer() {}
 
-    public StuAnswer(String stuA_id, String q_id, String stu_id, String stuA_content, int stuA_nice, int stuA_tread, Date stuA_time) {
+    public StuAnswer(String stuA_id, String q_id, String stu_id, String stuA_content, int stuA_nice, int stuA_tread, String stuA_time) {
         this.stuA_id = stuA_id;
         this.q_id = q_id;
         this.stu_id = stu_id;
@@ -71,11 +69,11 @@ public class StuAnswer {
         this.stuA_tread = stuA_tread;
     }
 
-    public Date getStuA_time() {
+    public String getStuA_time() {
         return stuA_time;
     }
 
-    public void setStuA_time(Date stuA_time) {
+    public void setStuA_time(String stuA_time) {
         this.stuA_time = stuA_time;
     }
 }

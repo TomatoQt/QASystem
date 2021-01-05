@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("user",teacher);
                 request.getSession().setAttribute("userType","teacher");
                 login_message="教师登录成功";
-                response.sendRedirect("teacherPage.jsp");
+                response.sendRedirect("teacherMainPage.jsp");
             }else {
                 login_message="账号不存在或密码错误";
                 System.out.println("账号不存在或密码错误");
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("user",admin);
                 request.getSession().setAttribute("userType","admin");
                 login_message="管理员登录成功";
-                response.sendRedirect("adminPage.jsp");
+                response.sendRedirect("adminMainPage.jsp");
             }else {
                 login_message="账号不存在或密码错误";
                 System.out.println("账号不存在或密码错误");

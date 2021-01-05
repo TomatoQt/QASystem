@@ -4,6 +4,7 @@ import Bean.StuSuggestion;
 import Bean.teaSuggestion;
 import Dao.stuSugDao;
 import Dao.teaSugDao;
+import utils.TimeConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 
 @WebServlet(name = "AddSuggestionServlet")
 public class AddSuggestionServlet extends HttpServlet {
@@ -23,9 +24,9 @@ public class AddSuggestionServlet extends HttpServlet {
             String stu_id=request.getParameter("stu_id");
             String stuS_title=request.getParameter("stuS_title");
             String stuS_content=request.getParameter("stuS_content");
-            Date currentTime=new Date(System.currentTimeMillis());
+            Date currentTime=new Date();
 
-            StuSuggestion stuSuggestion=new StuSuggestion(stuS_id,stu_id,stuS_title,stuS_content,currentTime);
+            StuSuggestion stuSuggestion=new StuSuggestion(stuS_id,stu_id,stuS_title,stuS_content, TimeConverter.getDate_Str(currentTime));
             stuSugDao dao=new stuSugDao();
             if (dao.addStuSug(stuSuggestion)){
                 response.sendRedirect("");//add stu suggestion page
@@ -37,9 +38,9 @@ public class AddSuggestionServlet extends HttpServlet {
             String tea_id=request.getParameter("tea_id");
             String teaS_title=request.getParameter("teaS_title");
             String teaS_content=request.getParameter("teaS_content");
-            Date teaS_time=new Date(System.currentTimeMillis());
+            Date teaS_time=new Date();
 
-            teaSuggestion teaSug=new teaSuggestion(teaS_id,tea_id,teaS_title,teaS_content,teaS_time);
+            teaSuggestion teaSug=new teaSuggestion(teaS_id,tea_id,teaS_title,teaS_content,TimeConverter.getDate_Str(teaS_time));
             teaSugDao dao=new teaSugDao();
             if (dao.addTeaSug(teaSug)){
                 response.sendRedirect("");//add teacher suggestion page

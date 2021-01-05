@@ -1,7 +1,5 @@
 package Bean;
 
-import java.sql.Date;
-
 public class teaAnswer {
     private String teaA_id;
     private String q_id;
@@ -9,11 +7,11 @@ public class teaAnswer {
     private String teaA_content;
     private int teaA_nice;
     private int teaA_tread;
-    private Date teaA_time;
+    private String teaA_time;
 
     public teaAnswer() {}
 
-    public teaAnswer(String teaA_id, String q_id, String tea_id, String teaA_content, int teaA_nice, int teaA_tread, Date teaA_time) {
+    public teaAnswer(String teaA_id, String q_id, String tea_id, String teaA_content, int teaA_nice, int teaA_tread, String teaA_time) {
         this.teaA_id = teaA_id;
         this.q_id = q_id;
         this.tea_id = tea_id;
@@ -71,11 +69,11 @@ public class teaAnswer {
         this.teaA_tread = teaA_tread;
     }
 
-    public Date getTeaA_time() {
+    public String getTeaA_time() {
         return teaA_time;
     }
 
-    public void setTeaA_time(Date teaA_time) {
+    public void setTeaA_time(String teaA_time) {
         this.teaA_time = teaA_time;
     }
 }

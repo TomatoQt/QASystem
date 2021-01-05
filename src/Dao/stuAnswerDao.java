@@ -22,7 +22,7 @@ public class stuAnswerDao extends BaseDao{
             pstmt.setString(4,stuAnswer.getStuA_content());
             pstmt.setInt(5,stuAnswer.getStuA_nice());
             pstmt.setInt(6,stuAnswer.getStuA_tread());
-            pstmt.setDate(7,stuAnswer.getStuA_time());
+            pstmt.setString(7,stuAnswer.getStuA_time());
             pstmt.executeUpdate();
             connection.close();
             return true;
@@ -57,7 +57,7 @@ public class stuAnswerDao extends BaseDao{
             pstmt.setString(3,stuAnswer.getStuA_content());
             pstmt.setInt(4,stuAnswer.getStuA_nice());
             pstmt.setInt(5,stuAnswer.getStuA_tread());
-            pstmt.setDate(6,stuAnswer.getStuA_time());
+            pstmt.setString(6,stuAnswer.getStuA_time());
             pstmt.setString(7,stuAnswer.getStuA_id());
             pstmt.executeUpdate();
             connection.close();
@@ -85,7 +85,7 @@ public class stuAnswerDao extends BaseDao{
                 sA.setStuA_content(rst.getString("stuA_content"));
                 sA.setStuA_nice(rst.getInt("stuA_nice"));
                 sA.setStuA_tread(rst.getInt("stuA_tread"));
-                sA.setStuA_time(rst.getDate("stuA_time"));
+                sA.setStuA_time(rst.getString("stuA_time"));
                 sAList.add(sA);
             }
             connection.close();
@@ -113,7 +113,7 @@ public class stuAnswerDao extends BaseDao{
                 sA.setStuA_content(rst.getString("stuA_content"));
                 sA.setStuA_nice(rst.getInt("stuA_nice"));
                 sA.setStuA_tread(rst.getInt("stuA_tread"));
-                sA.setStuA_time(rst.getDate("stuA_time"));
+                sA.setStuA_time(rst.getString("stuA_time"));
                 sAList.add(sA);
             }
             connection.close();

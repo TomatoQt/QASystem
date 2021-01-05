@@ -1,17 +1,15 @@
 package Bean;
 
-import java.sql.Date;
-
 public class stuSuggestionFeedback {
     private String stuSugFd_id;
     private String stuS_id;
     private String adm_id;
     private String stuSugFd_content;
-    private Date stuSugFd_time;
+    private String stuSugFd_time;
 
     public stuSuggestionFeedback() {}
 
-    public stuSuggestionFeedback(String stuSugFd_id, String stuS_id, String adm_id, String stuSugFd_content, Date stuSugFd_time) {
+    public stuSuggestionFeedback(String stuSugFd_id, String stuS_id, String adm_id, String stuSugFd_content, String stuSugFd_time) {
         this.stuSugFd_id = stuSugFd_id;
         this.stuS_id = stuS_id;
         this.adm_id = adm_id;
@@ -51,11 +49,11 @@ public class stuSuggestionFeedback {
         this.stuSugFd_content = stuSugFd_content;
     }
 
-    public Date getStuSugFd_time() {
+    public String getStuSugFd_time() {
         return stuSugFd_time;
     }
 
-    public void setStuSugFd_time(Date stuSugFd_time) {
+    public void setStuSugFd_time(String stuSugFd_time) {
         this.stuSugFd_time = stuSugFd_time;
     }
 }

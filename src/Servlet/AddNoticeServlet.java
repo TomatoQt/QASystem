@@ -3,6 +3,7 @@ package Servlet;
 import Bean.Admin;
 import Bean.Notice;
 import Dao.NoticeDao;
+import utils.TimeConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 
 @WebServlet(name = "AddNoticeServlet")
 public class AddNoticeServlet extends HttpServlet {
@@ -18,9 +19,9 @@ public class AddNoticeServlet extends HttpServlet {
         String notice_id=request.getParameter("notice_id");
         String notice_title=request.getParameter("notice_title");
         String notice_content=request.getParameter("notice_content");
-        Date nowTime=new Date(System.currentTimeMillis());
+        Date nowTime=new Date();
         String adm_id=((Admin)request.getSession().getAttribute("user")).getId();
-        Notice notice=new Notice(notice_id,notice_title,notice_content,nowTime,adm_id);
+        Notice notice=new Notice(notice_id,notice_title,notice_content, TimeConverter.getDate_Str(nowTime),adm_id);
         NoticeDao dao=new NoticeDao();
         if (dao.addNotice(notice)){
             response.sendRedirect("");//add notice page

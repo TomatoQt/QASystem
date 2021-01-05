@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: TomatoMan
-  Date: 2020/12/30
-  Time: 19:42
+  Date: 2021/1/4
+  Time: 21:38
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,7 +10,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的提问</title>
+    <title>${sessionScope.userType}提议</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
 </head>
@@ -30,10 +30,7 @@
             <div class="d-inline-block">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="StudentMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="newQuestion.jsp">&nbsp;&nbsp;提问&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light mr-2" href="teacherMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown mr-2">
@@ -41,19 +38,18 @@
                                 &nbsp;&nbsp;我的&nbsp;&nbsp;
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="btn dropdown-item" type="button" href="StudentPage.jsp">个人信息</a>
-                                <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
-                                <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
-                                <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
+                                <a class="btn dropdown-item" type="button" href="TeacherPage.jsp">个人信息</a>
+                                <a class="btn dropdown-item" type="button" href="TeacherAnswers.jsp">我的回答</a>
+                                <a class="btn dropdown-item" type="button" href="TeacherSuggestions.jsp">我的建议</a>
                                 <a class="btn dropdown-item" type="button" href="logout.do">退出登录</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="StudentOfferSuggestion.jsp">提出建议</a>
+                        <a class="btn btn-outline-light mr-2" href="TeacherOfferSuggestion.jsp">提出建议</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="StudentNotice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light" href="TeacherNotice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
                     </li>
                 </ul>
             </div>
@@ -64,21 +60,33 @@
         </nav>
     </div>
     <%--下部主体--%>
-    <div class="mt-lg-5 pt-lg-5">
-        <div>
-            <h3 class="pt-2" style="color: #e9ecef">我的提问<span class="badge badge-secondary ml-1">Q</span></h3>
-            <c:forEach items="${requestScope.questions}" var="Q">
-                <div class="card mb-4">
-                    <div class="card-header">
-                        提问者
+    <div class="mt-lg-5  pt-lg-5 align-self-center">
+        <%--毛玻璃背景效果--%>
+        <div class="blurryBackground pt-lg-5">
+            <div class="col-10 offset-sm-1">
+                <form action="" method="post" class="was-validated">
+                    <div class="mb-3">
+                        <label for="validationTextarea" style="color: #c6c8ca">提议标题</label>
+                        <div class="input-group is-invalid">
+                            <input type="text" class="form-control is-invalid" placeholder="请输入提议的标题" aria-describedby="validatedInputGroupPrepend" required>
+                            <div class="valid-feedback">
+                                标题有效
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">${Q.title}</h5>
-                        <p class="card-text">${Q.content}</p>
-                        <a href="QuestionAnswer.do?Q_id=${Q.id}" class="btn btn-primary">查看问题</a>
+                    <div class="mb-3">
+                        <label for="validationTextarea" style="color: #c6c8ca">问题内容</label>
+                        <textarea class="form-control is-invalid" rows="10" id="validationTextarea" placeholder="请详细地描述提议内容" required></textarea>
+                        <div class="valid-feedback">
+                            提议内容有效
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">提交提议</button>
+                        <button class="btn btn-info" type="reset">清空内容</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 

@@ -45,14 +45,15 @@
                                     <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
                                     <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
                                     <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
+                                    <a class="btn dropdown-item" type="button" href="logout.do">退出登录</a>
                                 </div>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light mr-2" href="OfferSuggestion.jsp">提出建议</a>
+                            <a class="btn btn-outline-light mr-2" href="StudentOfferSuggestion.jsp">提出建议</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-outline-light" href="Notice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
+                            <a class="btn btn-outline-light" href="StudentNotice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
                         </li>
                     </ul>
                 </div>

@@ -1,18 +1,19 @@
 package Bean;
 
-import java.sql.Date;
-
-public class ReAnswerTeacher {
+public class ReAnswerTeacher extends CompareTea{
     private String rAnsTea_id;
     private String teaA_id;
     private String rAnsTea_content;
-    private Date rAnsTea_time;
+    private String rAnsTea_time;
     private int rAnsTea_nice;
     private int rAnsTea_tread;
 
-    public ReAnswerTeacher() {}
+    public ReAnswerTeacher() {
+        super();
+    }
 
-    public ReAnswerTeacher(String rAnsTea_id, String teaA_id, String rAnsTea_content, Date rAnsTea_time, int rAnsTea_nice, int rAnsTea_tread) {
+    public ReAnswerTeacher(String rAnsTea_id, String teaA_id, String rAnsTea_content, String rAnsTea_time, int rAnsTea_nice, int rAnsTea_tread) {
+        super(rAnsTea_time);
         this.rAnsTea_id = rAnsTea_id;
         this.teaA_id = teaA_id;
         this.rAnsTea_content = rAnsTea_content;
@@ -45,11 +46,12 @@ public class ReAnswerTeacher {
         this.rAnsTea_content = rAnsTea_content;
     }
 
-    public Date getrAnsTea_time() {
+    public String getrAnsTea_time() {
         return rAnsTea_time;
     }
 
-    public void setrAnsTea_time(Date rAnsTea_time) {
+    public void setrAnsTea_time(String rAnsTea_time) {
+        super.setDate(rAnsTea_time);
         this.rAnsTea_time = rAnsTea_time;
     }
 

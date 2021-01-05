@@ -18,7 +18,7 @@ public class ReAnswerTeacherDao extends BaseDao{
             pstmt.setString(1,reAnswerTeacher.getrAnsTea_id());
             pstmt.setString(2,reAnswerTeacher.getTeaA_id());
             pstmt.setString(3,reAnswerTeacher.getrAnsTea_content());
-            pstmt.setDate(4,reAnswerTeacher.getrAnsTea_time());
+            pstmt.setString(4,reAnswerTeacher.getrAnsTea_time());
             pstmt.setInt(5,reAnswerTeacher.getrAnsTea_nice());
             pstmt.setInt(6,reAnswerTeacher.getrAnsTea_tread());
             pstmt.executeUpdate();
@@ -52,7 +52,7 @@ public class ReAnswerTeacherDao extends BaseDao{
             PreparedStatement pstmt=connection.prepareStatement(sql);
             pstmt.setString(1,reAnswerTeacher.getTeaA_id());
             pstmt.setString(2,reAnswerTeacher.getrAnsTea_content());
-            pstmt.setDate(3,reAnswerTeacher.getrAnsTea_time());
+            pstmt.setString(3,reAnswerTeacher.getrAnsTea_time());
             pstmt.setInt(4,reAnswerTeacher.getrAnsTea_nice());
             pstmt.setInt(5,reAnswerTeacher.getrAnsTea_tread());
             pstmt.setString(6,reAnswerTeacher.getrAnsTea_id());
@@ -77,7 +77,7 @@ public class ReAnswerTeacherDao extends BaseDao{
                 reAnswerTeacher.setrAnsTea_id(rst.getString("rAnsTea_id"));
                 reAnswerTeacher.setTeaA_id(rst.getString("teaA_id"));
                 reAnswerTeacher.setrAnsTea_content(rst.getString("rAnsTea_content"));
-                reAnswerTeacher.setrAnsTea_time(rst.getDate("rAnsTea_time"));
+                reAnswerTeacher.setrAnsTea_time(rst.getString("rAnsTea_time"));
                 reAnswerTeacher.setrAnsTea_nice(rst.getInt("rAnsTea_nice"));
                 reAnswerTeacher.setrAnsTea_tread(rst.getInt("rAnsTea_tread"));
             }
@@ -102,7 +102,7 @@ public class ReAnswerTeacherDao extends BaseDao{
                 reAnswerTeacher.setrAnsTea_id(rst.getString("rAnsTea_id"));
                 reAnswerTeacher.setTeaA_id(rst.getString("teaA_id"));
                 reAnswerTeacher.setrAnsTea_content(rst.getString("rAnsTea_content"));
-                reAnswerTeacher.setrAnsTea_time(rst.getDate("rAnsTea_time"));
+                reAnswerTeacher.setrAnsTea_time(rst.getString("rAnsTea_time"));
                 reAnswerTeacher.setrAnsTea_nice(rst.getInt("rAnsTea_nice"));
                 reAnswerTeacher.setrAnsTea_tread(rst.getInt("rAnsTea_tread"));
                 rAnsTeaList.add(reAnswerTeacher);

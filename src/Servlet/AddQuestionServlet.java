@@ -3,6 +3,7 @@ package Servlet;
 import Bean.Question;
 import Bean.Student;
 import Dao.QuestionDao;
+import utils.TimeConverter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.util.Date;
 
 @WebServlet(name = "AddQuestionServlet", urlPatterns = {"/addQuestion"})
 public class AddQuestionServlet extends HttpServlet {
@@ -21,9 +22,9 @@ public class AddQuestionServlet extends HttpServlet {
         String title=request.getParameter("question_title");
         String content=request.getParameter("question_content");
         int click=0;//initial state
-        Date time=new Date(System.currentTimeMillis());
+        Date time=new Date();
 
-        Question question=new Question(id,stu_id,title,content,click,time);
+        Question question=new Question(id,stu_id,title,content,click, TimeConverter.getDate_Str(time));
         if (dao.addQuestion(question)){
             request.setAttribute("add_question_success","提问成功");
             request.getRequestDispatcher("newQuestion.jsp").forward(request,response);//add question page

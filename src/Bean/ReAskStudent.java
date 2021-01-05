@@ -1,16 +1,17 @@
 package Bean;
 
-import java.sql.Date;
-
-public class ReAskStudent {
+public class ReAskStudent extends CompareStu{
     private String rAskStu_id;
     private String stuA_id;
     private String rAskStu_content;
-    private Date rAskStu_time;
+    private String rAskStu_time;
 
-    public ReAskStudent() {}
+    public ReAskStudent(){
+        super();
+    }
 
-    public ReAskStudent(String rAskStu_id, String stuA_id, String rAskStu_content, Date rAskStu_time) {
+    public ReAskStudent(String rAskStu_id, String stuA_id, String rAskStu_content, String rAskStu_time) {
+        super(rAskStu_time);
         this.rAskStu_id = rAskStu_id;
         this.stuA_id = stuA_id;
         this.rAskStu_content = rAskStu_content;
@@ -41,11 +42,12 @@ public class ReAskStudent {
         this.rAskStu_content = rAskStu_content;
     }
 
-    public Date getrAskStu_time() {
+    public String getrAskStu_time() {
         return rAskStu_time;
     }
 
-    public void setrAskStu_time(Date rAskStu_time) {
+    public void setrAskStu_time(String rAskStu_time) {
         this.rAskStu_time = rAskStu_time;
+        super.setDate(rAskStu_time);
     }
 }

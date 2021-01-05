@@ -18,7 +18,7 @@ public class ReAnswerStudentDao extends BaseDao{
             pstmt.setString(1,reAnswerStudent.getrAnsStu_id());
             pstmt.setString(2,reAnswerStudent.getStuA_id());
             pstmt.setString(3,reAnswerStudent.getrAnsStu_content());
-            pstmt.setDate(4,reAnswerStudent.getrAnsStu_time());
+            pstmt.setString(4,reAnswerStudent.getrAnsStu_time());
             pstmt.setInt(5,reAnswerStudent.getrAnsStu_nice());
             pstmt.setInt(6,reAnswerStudent.getrAnsStu_tread());
             pstmt.executeUpdate();
@@ -52,7 +52,7 @@ public class ReAnswerStudentDao extends BaseDao{
             PreparedStatement pstmt=connection.prepareStatement(sql);
             pstmt.setString(1,reAnswerStudent.getStuA_id());
             pstmt.setString(2,reAnswerStudent.getrAnsStu_content());
-            pstmt.setDate(3,reAnswerStudent.getrAnsStu_time());
+            pstmt.setString(3,reAnswerStudent.getrAnsStu_time());
             pstmt.setInt(4,reAnswerStudent.getrAnsStu_nice());
             pstmt.setInt(5,reAnswerStudent.getrAnsStu_tread());
             pstmt.setString(6,reAnswerStudent.getrAnsStu_id());
@@ -77,7 +77,7 @@ public class ReAnswerStudentDao extends BaseDao{
                 reAnswerStudent.setrAnsStu_id(rst.getString("rAnsStu_id"));
                 reAnswerStudent.setStuA_id(rst.getString("stuA_id"));
                 reAnswerStudent.setrAnsStu_content(rst.getString("rAnsStu_content"));
-                reAnswerStudent.setrAnsStu_time(rst.getDate("rAnsStu_time"));
+                reAnswerStudent.setrAnsStu_time(rst.getString("rAnsStu_time"));
                 reAnswerStudent.setrAnsStu_nice(rst.getInt("rAnsStu_nice"));
                 reAnswerStudent.setrAnsStu_tread(rst.getInt("rAnsStu_tread"));
             }
@@ -103,7 +103,7 @@ public class ReAnswerStudentDao extends BaseDao{
                 reAnswerStudent.setrAnsStu_id(rst.getString("rAnsStu_id"));
                 reAnswerStudent.setStuA_id(rst.getString("stuA_id"));
                 reAnswerStudent.setrAnsStu_content(rst.getString("rAnsStu_content"));
-                reAnswerStudent.setrAnsStu_time(rst.getDate("rAnsStu_time"));
+                reAnswerStudent.setrAnsStu_time(rst.getString("rAnsStu_time"));
                 reAnswerStudent.setrAnsStu_nice(rst.getInt("rAnsStu_nice"));
                 reAnswerStudent.setrAnsStu_tread(rst.getInt("rAnsStu_tread"));
                 reAnsStuList.add(reAnswerStudent);

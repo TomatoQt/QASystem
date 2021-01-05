@@ -1,11 +1,7 @@
 package Servlet;
 
-import Bean.Question;
-import Bean.StuAnswer;
-import Bean.teaAnswer;
-import Dao.QuestionDao;
-import Dao.stuAnswerDao;
-import Dao.teaAnsDao;
+import Bean.*;
+import Dao.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "QuestionAnswerServlet", urlPatterns = {"/QuestionAnswer.do"})
 public class QuestionAnswerServlet extends HttpServlet {
@@ -36,10 +35,43 @@ public class QuestionAnswerServlet extends HttpServlet {
         ArrayList<teaAnswer> teaAnswers=taDao.findByQstnId(q_id);
         request.setAttribute("teacher_answers",teaAnswers);
 
+        ReAskTeacherDao RKTdao=new ReAskTeacherDao();
+        ReAnswerTeacherDao RATdao=new ReAnswerTeacherDao();
+        Map<String, ArrayList<CompareTea>> mapTeaA=new HashMap<String, ArrayList<CompareTea>>();
+        for (teaAnswer ta : teaAnswers){
+            ArrayList<ReAskTeacher> askList=RKTdao.findByTeaA_id(ta.getTeaA_id());
+            ArrayList<ReAnswerTeacher> answerList=RATdao.findByTeaAnswerId(ta.getTeaA_id());
+
+            ArrayList<CompareTea> compareList=new ArrayList<>(askList);
+            compareList.addAll(answerList);
+
+            Collections.sort(compareList);
+
+            mapTeaA.put(ta.getTeaA_id(),compareList);
+        }
+        request.setAttribute("mapTeaA",mapTeaA);
+
         //学生问题回答
         stuAnswerDao saDao=new stuAnswerDao();
         ArrayList<StuAnswer> stuAnswers=saDao.findByQstnId(q_id);
         request.setAttribute("student_answers",stuAnswers);
+
+        ReAskStudentDao RKSdao=new ReAskStudentDao();
+        ReAnswerStudentDao RASdao=new ReAnswerStudentDao();
+        Map<String, ArrayList<CompareStu>> mapStuA=new HashMap<String, ArrayList<CompareStu>>();
+        for (StuAnswer stuAnswer : stuAnswers){
+            ArrayList<ReAskStudent> askList=RKSdao.findByStuA_id(stuAnswer.getStuA_id());
+            ArrayList<ReAnswerStudent> answerList=RASdao.findByStuAnsId(stuAnswer.getStuA_id());
+
+            //将答案下的回复合并
+            ArrayList<CompareStu> compareList = new ArrayList<>(askList);
+            compareList.addAll(answerList);
+
+            Collections.sort(compareList);
+
+            mapStuA.put(stuAnswer.getStuA_id(),compareList);
+        }
+        request.setAttribute("mapStuA",mapStuA);
 
         request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);
     }
