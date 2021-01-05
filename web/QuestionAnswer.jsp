@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ page import="Bean.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Map" %>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -198,6 +201,15 @@
                         <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <p class="text-left">${A.stuA_content}</p>
+                                <div>
+                                    <%--// TODO 重新解析map --%>
+                                    <p class="text-left">${requestScope.mapStuA[A.stuA_id][0][rAskStu_content]}</p>
+                                    <p class="text-right">${requestScope.mapStuA[A.stuA_id][0][rAskStu_time]}</p>
+                                </div>
+                                <div>
+                                    <p class="text-left">${requestScope.mapStuA[A.stuA_id][0][rAnsStu_content]}</p>
+                                    <p class="text-right">${requestScope.mapStuA[A.stuA_id][0][rAnsStu_time]}</p>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <c:if test="${sessionScope.user.id == requestScope.question.stu_id}">

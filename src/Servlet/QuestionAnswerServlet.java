@@ -30,6 +30,9 @@ public class QuestionAnswerServlet extends HttpServlet {
         Question question=questionDao.findById(q_id);
         request.setAttribute("question",question);
 
+        //将当前问题ID存到session中，为后续的问题回答做准备
+        request.getSession().setAttribute("current_question_id",q_id);
+
         //教师问题回答
         teaAnsDao taDao=new teaAnsDao();
         ArrayList<teaAnswer> teaAnswers=taDao.findByQstnId(q_id);
@@ -72,6 +75,8 @@ public class QuestionAnswerServlet extends HttpServlet {
             mapStuA.put(stuAnswer.getStuA_id(),compareList);
         }
         request.setAttribute("mapStuA",mapStuA);
+
+        //System.out.println(((ReAnswerStudent)mapStuA.get("SA2").get(0)).getrAnsStu_content());
 
         request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);
     }

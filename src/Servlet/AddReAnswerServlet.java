@@ -28,8 +28,10 @@ public class AddReAnswerServlet extends HttpServlet {
             int rAnsStu_tread=0;
             ReAnswerStudent rAnsStu=new ReAnswerStudent(rAnsStu_id,stuA_id,rAnsStu_content, TimeConverter.getDate_Str(rAnsStu_time),rAnsStu_nice,rAnsStu_tread);
 
+            //获取当前回答问题的ID
+            String question_id=(String)request.getSession().getAttribute("current_question_id");
             if (dao.addReAnsStu(rAnsStu)){
-                response.sendRedirect("");//add re-answer student page
+                response.sendRedirect("QuestionAnswer.jsp?Q_id="+question_id);//add re-answer student page
             }else {
                 System.out.println("add re-answer student failed");
             }
