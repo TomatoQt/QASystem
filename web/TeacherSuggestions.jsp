@@ -64,6 +64,17 @@
         <div>
             <h3 class="pt-2" style="color: #e9ecef">我的提议<span class="badge badge-secondary ml-1">Suggestions</span></h3>
             <!--建议内容-->
+            <c:forEach items="${requestScope.tea_suggestions}" var="S">
+                <div class="card mb-4">
+                    <div class="card-header">
+                            ${sessionScope.user.name}
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">${S.teaS_title}</h5>
+                        <p class="card-text">${S.teaS_content}</p>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 

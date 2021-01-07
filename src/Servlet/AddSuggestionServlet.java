@@ -1,6 +1,8 @@
 package Servlet;
 
 import Bean.StuSuggestion;
+import Bean.Student;
+import Bean.Teacher;
 import Bean.teaSuggestion;
 import Dao.stuSugDao;
 import Dao.teaSugDao;
@@ -14,36 +16,38 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 
-@WebServlet(name = "AddSuggestionServlet")
+@WebServlet(name = "AddSuggestionServlet", urlPatterns = {"/addSuggestion.do"})
 public class AddSuggestionServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userType=(String)request.getSession().getAttribute("userType");
 
         if (userType.equals("student")){
-            String stuS_id=request.getParameter("stuSug_id");
-            String stu_id=request.getParameter("stu_id");
+            stuSugDao dao=new stuSugDao();
+            String stuS_id="SS"+Integer.toString(dao.getBigId()+1);
+            String stu_id=((Student)request.getSession().getAttribute("user")).getId();
             String stuS_title=request.getParameter("stuS_title");
             String stuS_content=request.getParameter("stuS_content");
             Date currentTime=new Date();
 
             StuSuggestion stuSuggestion=new StuSuggestion(stuS_id,stu_id,stuS_title,stuS_content, TimeConverter.getDate_Str(currentTime));
-            stuSugDao dao=new stuSugDao();
+
             if (dao.addStuSug(stuSuggestion)){
-                response.sendRedirect("");//add stu suggestion page
+                response.sendRedirect("StudentOfferSuggestion.jsp");//add stu suggestion page
             }else {
                 System.out.println("add student suggestion failed");
             }
         }else {
-            String teaS_id=request.getParameter("teaS_id");
-            String tea_id=request.getParameter("tea_id");
+            teaSugDao dao=new teaSugDao();
+            String teaS_id="TS"+Integer.toString(dao.getBigId()+1);//request.getParameter("teaS_id");
+            String tea_id=((Teacher)request.getSession().getAttribute("user")).getId();
             String teaS_title=request.getParameter("teaS_title");
             String teaS_content=request.getParameter("teaS_content");
             Date teaS_time=new Date();
 
             teaSuggestion teaSug=new teaSuggestion(teaS_id,tea_id,teaS_title,teaS_content,TimeConverter.getDate_Str(teaS_time));
-            teaSugDao dao=new teaSugDao();
+
             if (dao.addTeaSug(teaSug)){
-                response.sendRedirect("");//add teacher suggestion page
+                response.sendRedirect("TeacherOfferSuggestion.jsp");//add teacher suggestion page
             }else {
                 System.out.println("add teacher suggestion failed");
             }

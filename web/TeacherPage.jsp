@@ -83,18 +83,18 @@
     <div class="mt-lg-5 pt-lg-5">
         <div class="blurryBackground">
             <div class="mt-5 mb-5 ml-5 mr-5">
-                <form class="needs-validation" novalidate>
+                <form class="needs-validation" novalidate action="updateTea.do">
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom01">名字</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="ming" required>
                             <div class="valid-feedback">
                                 不错
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom02">姓氏</label>
-                            <input type="text" class="form-control" id="validationCustom02" required>
+                            <input type="text" class="form-control" id="validationCustom02" name="xing" required>
                             <div class="valid-feedback">
                                 不错
                             </div>
@@ -103,21 +103,21 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom03">电话</label>
-                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <input type="text" class="form-control" id="validationCustom03" name="phone" required>
                             <div class="invalid-feedback">
                                 请输入电话
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationCustom04">昵称</label>
-                            <input type="text" class="form-control" id="validationCustom04" required>
+                            <input type="text" class="form-control" id="validationCustom04" name="nickname" required>
                             <div class="invalid-feedback">
                                 请输入昵称
                             </div>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label for="validationCustom05">性别</label>
-                            <select class="custom-select" id="validationCustom05" required>
+                            <select class="custom-select" id="validationCustom05" name="sex" required>
                                 <option>男</option>
                                 <option>女</option>
                             </select>
@@ -129,14 +129,14 @@
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom06">邮箱</label>
-                            <input type="text" class="form-control" id="validationCustom06" required>
+                            <input type="text" class="form-control" id="validationCustom06" name="email" required>
                             <div class="valid-feedback">
                                 不错
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="validationCustom07">身份证</label>
-                            <input type="text" class="form-control" id="validationCustom07" required>
+                            <input type="text" class="form-control" id="validationCustom07" name="idCard" required>
                             <div class="valid-feedback">
                                 不错
                             </div>

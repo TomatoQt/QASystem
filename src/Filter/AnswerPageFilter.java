@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 @WebFilter(filterName = "StudentAnswerPageFilter", urlPatterns = {"/StudentAnswers.jsp","/TeacherAnswers.jsp"})
-public class StudentAnswerPageFilter extends HttpFilter implements Filter {
+public class AnswerPageFilter extends HttpFilter implements Filter {
     public void destroy() {
     }
 

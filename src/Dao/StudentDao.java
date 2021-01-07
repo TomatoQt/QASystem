@@ -61,6 +61,28 @@ public class StudentDao extends BaseDao{
             pstmt.setString(7,student.getIdCard());
             pstmt.setString(8,student.getRecentSpeak());
             pstmt.setString(9,student.getId());
+            pstmt.executeUpdate();
+            connection.close();
+            return true;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateStudentBasicInfo(Student student){
+        String sql="UPDATE Student SET stu_nickname=?,stu_name=?,stu_phone=?,stu_sex=?,stu_email=?,stu_idCard=? WHERE stu_id=?";
+        try{
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1,student.getNickname());
+            pstmt.setString(2,student.getName());
+            pstmt.setString(3,student.getPhone());
+            pstmt.setInt(4,student.getSex()?1:0);
+            pstmt.setString(5,student.getEmail());
+            pstmt.setString(6,student.getIdCard());
+            pstmt.setString(7,student.getId());
+            pstmt.executeUpdate();
             connection.close();
             return true;
         }catch (SQLException se){

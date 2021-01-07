@@ -68,11 +68,11 @@
         <%--毛玻璃背景效果--%>
         <div class="blurryBackground pt-lg-5">
             <div class="col-10 offset-sm-1">
-                <form action="" method="post" class="was-validated">
+                <form action="addSuggestion.do" method="post" class="was-validated">
                     <div class="mb-3">
                         <label for="validationTextarea" style="color: #c6c8ca">提议标题</label>
                         <div class="input-group is-invalid">
-                            <input type="text" class="form-control is-invalid" placeholder="请输入提议的标题" aria-describedby="validatedInputGroupPrepend" required>
+                            <input type="text" class="form-control is-invalid" name="stuS_title" placeholder="请输入提议的标题" aria-describedby="validatedInputGroupPrepend" required>
                             <div class="valid-feedback">
                                 标题有效
                             </div>
@@ -80,7 +80,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="validationTextarea" style="color: #c6c8ca">问题内容</label>
-                        <textarea class="form-control is-invalid" rows="10" id="validationTextarea" placeholder="请详细地描述提议内容" required></textarea>
+                        <textarea class="form-control is-invalid" rows="10" id="validationTextarea" name="stuS_content" placeholder="请详细地描述提议内容" required></textarea>
                         <div class="valid-feedback">
                             提议内容有效
                         </div>
