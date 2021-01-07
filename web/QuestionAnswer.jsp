@@ -154,12 +154,14 @@
             <!--问题-->
             <div class="card mb-4">
                 <div class="card-header">
-                    提问者
+                    提问者:&nbsp;&nbsp;${requestScope.question.stu_id}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${requestScope.question.title}</h5>
                     <p class="card-text">${requestScope.question.content}</p>
+                    <label class="offset-10">${requestScope.question.time}</label>
                     <!-- Button trigger modal -->
+                    <br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newAnswer">
                         我来答
                     </button>
@@ -173,7 +175,7 @@
                         <div class="card-header">
                             <h2 class="mb-0">
                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    教师解答 #${status.count}
+                                    教师(${A.tea_id})解答 #${status.count}
                                 </button>
                             </h2>
                         </div>
@@ -182,6 +184,7 @@
                             <div class="card-body">
                                 ${A.teaA_content}
                             </div>
+                            <label class="offset-10">${A.teaA_time}</label>
                         </div>
                     </div>
                 </c:forEach>
@@ -194,7 +197,7 @@
                         <div class="card-header">
                             <h2 class="mb-0">
                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    ${status.count}# 学生解答
+                                    学生(${A.stu_id})解答 #${status.count}
                                 </button>
                             </h2>
                         </div>
@@ -202,6 +205,7 @@
                         <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
                                 <p class="text-left">${A.stuA_content}</p>
+                                <label class="offset-10">${A.stuA_time}</label>
                                 <c:forEach items="${requestScope.mapStuA[A.stuA_id]}" var="stuA_down">
 <%--                                    <div>--%>
 <%--                                        <p class="text-left">${stuA_down.rAskStu_content}</p>--%>
@@ -215,7 +219,7 @@
                             </div>
                             <div class="card-footer">
                                 <c:if test="${sessionScope.user.id == requestScope.question.stu_id}">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRKS" value="${A.stuA_id}" onclick="setAnswerValue(this)">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRAS" value="${A.stuA_id}" onclick="setAnswerValue(this)">
                                         追问
                                     </button>
                                 </c:if>

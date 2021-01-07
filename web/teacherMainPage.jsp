@@ -70,6 +70,8 @@
                 <div class="card-body">
                     <h5 class="card-title">${Q.title}</h5>
                     <p class="card-text">${Q.content}</p>
+                    <label class="offset-10">${Q.time}</label>
+                    <br>
                     <a href="QuestionAnswer.do?Q_id=${Q.id}" class="btn btn-primary">查看问题</a>
                 </div>
             </div>

@@ -69,11 +69,13 @@
             <c:forEach items="${requestScope.questions}" var="Q">
                 <div class="card mb-4">
                     <div class="card-header">
-                        提问者
+                        提问者:&nbsp;&nbsp;${Q.stu_id}
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">${Q.title}</h5>
                         <p class="card-text">${Q.content}</p>
+                        <label class="offset-10">${Q.time}</label>
+                        <br>
                         <a href="QuestionAnswer.do?Q_id=${Q.id}" class="btn btn-primary">查看问题</a>
                     </div>
                 </div>

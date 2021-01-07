@@ -111,6 +111,30 @@ public class teaSugDao extends BaseDao{
         }
     }
 
+    public ArrayList<teaSuggestion> findAll(){
+        String sql="SELECT * FROM teaSuggestion";
+        ArrayList<teaSuggestion> tSList=new ArrayList<teaSuggestion>();
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            if (rst.next()){
+                teaSuggestion tS=new teaSuggestion();
+                tS.setTeaS_id(rst.getString("teaS_id"));
+                tS.setTea_id(rst.getString("tea_id"));
+                tS.setTeaS_title(rst.getString("teaS_title"));
+                tS.setTeaS_content(rst.getString("teaS_content"));
+                tS.setTeaS_time(rst.getString("teaS_time"));
+                tSList.add(tS);
+            }
+            connection.close();
+            return tSList;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return null;
+        }
+    }
+
     public int getBigId(){
         String sql="SELECT * FROM teaSuggestion";
         ArrayList<teaSuggestion> teaSuggestions=new ArrayList<teaSuggestion>();

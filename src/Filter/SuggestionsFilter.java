@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebFilter(filterName = "SuggestionsFilter", urlPatterns = {"/TeacherSuggestions.jsp","/StudentSuggestions.jsp"})
+@WebFilter(filterName = "SuggestionsFilter", urlPatterns = {"/TeacherSuggestions.jsp","/StudentSuggestions.jsp","/CheckSuggestions.jsp"})
 public class SuggestionsFilter extends HttpFilter implements Filter {
     public void destroy() {
     }
@@ -24,9 +24,16 @@ public class SuggestionsFilter extends HttpFilter implements Filter {
             stuSugDao dao=new stuSugDao();
             ArrayList<StuSuggestion> stuSugs=dao.findByStu_id(((Student)req.getSession().getAttribute("user")).getId());
             req.setAttribute("stu_suggestions",stuSugs);
-        }else {//teacher
+        }else if (((String)req.getSession().getAttribute("userType")).equals("teacher")){//teacher
             teaSugDao dao=new teaSugDao();
             ArrayList<teaSuggestion> teaSugs=dao.findByTea_id(((Teacher)req.getSession().getAttribute("user")).getId());
+            req.setAttribute("tea_suggestions",teaSugs);
+        }else {//admin
+            stuSugDao studao=new stuSugDao();
+            ArrayList<StuSuggestion> stuSugs=studao.findAll();
+            req.setAttribute("stu_suggestions",stuSugs);
+            teaSugDao teadao=new teaSugDao();
+            ArrayList<teaSuggestion> teaSugs=teadao.findAll();
             req.setAttribute("tea_suggestions",teaSugs);
         }
         chain.doFilter(req, resp);

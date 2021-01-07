@@ -64,10 +64,11 @@
         <div class="text-center">
             <c:forEach items="${requestScope.notices}" var="notice">
                 <div class="card bg-light mb-3 d-inline-block" style="max-width: 18rem;">
-                    <div class="card-header">{notice.}</div>
+                    <div class="card-header">ADM_ID:&nbsp;&nbsp;${notice.adm_id}</div>
                     <div class="card-body">
-                        <h5 class="card-title">Light card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <h5 class="card-title">${notice.title}</h5>
+                        <p class="card-text">${notice.content}</p>
+                        <label>${notice.time}</label>
                     </div>
                 </div>
             </c:forEach>

@@ -136,6 +136,30 @@ public class stuSugDao extends BaseDao{
         }
     }
 
+    public ArrayList<StuSuggestion> findAll(){
+        String sql="SELECT * FROM stuSuggestion";
+        ArrayList<StuSuggestion> stuSugList=new ArrayList<StuSuggestion>();
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            ResultSet rst=pstmt.executeQuery();
+            while (rst.next()) {
+                StuSuggestion stuSuggestion=new StuSuggestion();
+                stuSuggestion.setStuS_id(rst.getString("stuS_id"));
+                stuSuggestion.setStu_id(rst.getString("stu_id"));
+                stuSuggestion.setStuS_title(rst.getString("stuS_title"));
+                stuSuggestion.setStuS_content(rst.getString("stuS_content"));
+                stuSuggestion.setStuS_time(rst.getString("stuS_time"));
+                stuSugList.add(stuSuggestion);
+            }
+            connection.close();
+            return stuSugList;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return null;
+        }
+    }
+
     public int getBigId(){
         String sql="SELECT * FROM stuSuggestion";
         ArrayList<StuSuggestion> stuSuggestions=new ArrayList<StuSuggestion>();

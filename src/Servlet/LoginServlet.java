@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
                 request.getSession().setAttribute("user",admin);
                 request.getSession().setAttribute("userType","admin");
                 login_message="管理员登录成功";
-                response.sendRedirect("adminMainPage.jsp");
+                response.sendRedirect("AdminMainPage.jsp");
             }else {
                 login_message="账号不存在或密码错误";
                 System.out.println("账号不存在或密码错误");

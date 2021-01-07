@@ -76,6 +76,7 @@
                     <div class="card-body">
                         <h5 class="card-title">${S.stuS_title}</h5>
                         <p class="card-text">${S.stuS_content}</p>
+                        <label class="offset-10">${S.stuS_time}</label>
                     </div>
                 </div>
             </c:forEach>

@@ -53,4 +53,24 @@ public class AdminDao extends BaseDao{
             return result;
         }
     }
+
+    public boolean updateAdmin(Admin admin){
+        String sql="UPDATE Administrator SET adm_nickname=?,adm_password=?,adm_name=?,adm_sex=?,adm_phone=? WHERE adm_id=?";
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1,admin.getNickname());
+            pstmt.setString(2,admin.getPassword());
+            pstmt.setString(3,admin.getName());
+            pstmt.setInt(4,admin.getSex()?1:0);
+            pstmt.setString(5,admin.getPhone());
+            pstmt.setString(6,admin.getId());
+            pstmt.executeUpdate();
+            connection.close();
+            return true;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return false;
+        }
+    }
 }

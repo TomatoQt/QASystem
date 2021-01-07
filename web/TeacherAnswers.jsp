@@ -71,6 +71,9 @@
                     </div>
                     <div class="card-body">
                         <p class="card-text">${A.teaA_content}</p>
+                        <label class="offset-10" >
+                            ${A.teaA_time}
+                        </label>
                         <a href="QuestionAnswer.do?Q_id=${A.q_id}" class="btn btn-primary">查看问题</a>
                     </div>
                 </div>
