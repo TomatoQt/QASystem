@@ -68,6 +68,17 @@
         <div>
             <h3 class="pt-2" style="color: #e9ecef">我的回答<span class="badge badge-secondary ml-1">A</span></h3>
             <!--回答内容-->
+            <c:forEach items="${requestScope.answers}" var="A">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        ${sessionScope.user.name}
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">${A.stuA_content}</p>
+                        <a href="QuestionAnswer.do?Q_id=${A.q_id}" class="btn btn-primary">查看问题</a>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 

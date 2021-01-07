@@ -31,21 +31,24 @@ public class AddReAnswerServlet extends HttpServlet {
             //获取当前回答问题的ID
             String question_id=(String)request.getSession().getAttribute("current_question_id");
             if (dao.addReAnsStu(rAnsStu)){
-                response.sendRedirect("QuestionAnswer.jsp?Q_id="+question_id);//add re-answer student page
+                response.sendRedirect("QuestionAnswer.do?Q_id="+question_id);//add re-answer student page
             }else {
                 System.out.println("add re-answer student failed");
             }
         }else {//teacher
-            String rAnsTea_id=request.getParameter("rAnsTea_id");
-            String teaA_id=request.getParameter("teaA_id");
-            String rAnsTea_content=request.getParameter("rAnsTea_content");
+            ReAnswerTeacherDao dao=new ReAnswerTeacherDao();
+            String rAnsTea_id="RAT"+(dao.getBigId()+1);
+            String teaA_id=request.getParameter("Answer_id");
+            String rAnsTea_content=request.getParameter("ReAnswer_content");
             Date rAnsTea_time=new Date();
             int rAnsTea_nice=0;
             int rAnsTea_tread=0;
             ReAnswerTeacher rAnsTea=new ReAnswerTeacher(rAnsTea_id,teaA_id,rAnsTea_content,TimeConverter.getDate_Str(rAnsTea_time),rAnsTea_nice,rAnsTea_tread);
-            ReAnswerTeacherDao dao=new ReAnswerTeacherDao();
+
+            //获取当前回答问题的ID
+            String question_id=(String)request.getSession().getAttribute("current_question_id");
             if (dao.addReAnsTea(rAnsTea)){
-                response.sendRedirect("");//add re-answer teacher page
+                response.sendRedirect("QuestionAnswer.do?Q_id="+question_id);//add re-answer teacher page
             }else {
                 System.out.println("add re-answer teacher failed");
             }

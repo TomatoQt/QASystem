@@ -23,7 +23,7 @@ public class AddAnswerServlet extends HttpServlet {
             String stuA_id="SA" + Integer.toString(dao.getBigId()+1);
             String q_id=request.getParameter("q_id");
             String stu_id=((Student)request.getSession().getAttribute("user")).getId();
-            String stuA_content=request.getParameter("stuA_content");
+            String stuA_content=request.getParameter("Answer_textarea_content");
             int stuA_nice=0;
             int stuA_tread=0;
             Date stuA_time=new Date();
@@ -39,14 +39,15 @@ public class AddAnswerServlet extends HttpServlet {
             String teaA_id="TA" + Integer.toString(dao.getBigId()+1);
             String q_id=request.getParameter("q_id");
             String tea_id=((Teacher)request.getSession().getAttribute("user")).getId();
-            String teaA_content=request.getParameter("teaA_content");
+            String teaA_content=request.getParameter("Answer_textarea_content");
             int teaA_nice=0;
             int teaA_tread=0;
             Date teaA_time=new Date();
             teaAnswer tA=new teaAnswer(teaA_id,q_id,tea_id,teaA_content,teaA_nice,teaA_tread,TimeConverter.getDate_Str(teaA_time));
 
             if (dao.addTeaAns(tA)){
-                request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);//add teacher answer page
+                request.getRequestDispatcher("QA4Teacher.jsp").forward(request,response);//add teacher answer page
+//                response.sendRedirect("QA4Teacher.jsp");//add teacher answer page
             }else {
                 System.out.println("add teacher answer failed");
             }

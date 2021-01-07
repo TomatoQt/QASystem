@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: TomatoMan
-  Date: 2020/12/30
-  Time: 22:47
+  Date: 2021/1/7
+  Time: 12:43
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -14,7 +14,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-<%--    <meta http-equiv="refresh" content="5">--%>
+    <%--    <meta http-equiv="refresh" content="5">--%>
     <title>问题</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/mycss.css">
@@ -47,7 +47,7 @@
         </div>
     </div>
 </div>
-<!-- Modal 新增学生追问 -->
+<%--<!-- Modal 新增追问教师 -->--%>
 <%--<div class="modal fade" id="newRKS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">--%>
 <%--    <div class="modal-dialog">--%>
 <%--        <div class="modal-content">--%>
@@ -58,7 +58,7 @@
 <%--                </button>--%>
 <%--            </div>--%>
 <%--            <div class="modal-body">--%>
-<%--                <form name="reask_content" action="addReAsk.do" method="post">--%>
+<%--                <form name="reask_content" action="addReAns.do" method="post">--%>
 <%--                    <div class="form-group">--%>
 <%--                        <label>输入你的回答</label>--%>
 <%--                        <textarea name="ReAnswer_content" class="form-control" rows="8"></textarea>--%>
@@ -73,7 +73,7 @@
 <%--        </div>--%>
 <%--    </div>--%>
 <%--</div>--%>
-<!-- Modal 新增学生复答 -->
+<!-- Modal 新增教师复答 -->
 <div class="modal fade" id="newRAS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -114,10 +114,7 @@
             <div class="d-inline-block">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="StudentMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="newQuestion.jsp">&nbsp;&nbsp;提问&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light mr-2" href="teacherMainPage.jsp">&nbsp;&nbsp;主页&nbsp;&nbsp;</a>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown mr-2">
@@ -125,19 +122,18 @@
                                 &nbsp;&nbsp;我的&nbsp;&nbsp;
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                <a class="btn dropdown-item" type="button" href="StudentPage.jsp">个人信息</a>
-                                <a class="btn dropdown-item" type="button" href="StudentQuestions.jsp">我的提问</a>
-                                <a class="btn dropdown-item" type="button" href="StudentAnswers.jsp">我的回答</a>
-                                <a class="btn dropdown-item" type="button" href="StudentSuggestions.jsp">我的建议</a>
+                                <a class="btn dropdown-item" type="button" href="TeacherPage.jsp">个人信息</a>
+                                <a class="btn dropdown-item" type="button" href="TeacherAnswers.jsp">我的回答</a>
+                                <a class="btn dropdown-item" type="button" href="TeacherSuggestions.jsp">我的建议</a>
                                 <a class="btn dropdown-item" type="button" href="logout.do">退出登录</a>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light mr-2" href="StudentOfferSuggestion.jsp">提出建议</a>
+                        <a class="btn btn-outline-light mr-2" href="TeacherOfferSuggestion.jsp">提出建议</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light" href="StudentNotice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
+                        <a class="btn btn-outline-light" href="TeacherNotice.jsp">&nbsp;&nbsp;公告&nbsp;&nbsp;</a>
                     </li>
                 </ul>
             </div>
@@ -180,7 +176,29 @@
 
                         <div class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
-                                ${A.teaA_content}
+                                <p class="text-left">${A.teaA_content}</p>
+                                <c:forEach items="${requestScope.mapTeaA[A.teaA_id]}" var="teaA_down">
+                                    <%--                                    <div>--%>
+                                    <%--                                        <p class="text-left">${stuA_down.rAskStu_content}</p>--%>
+                                    <%--                                        <p class="text-right">${stuA_down.date}</p>--%>
+                                    <%--                                    </div>--%>
+                                    <div>
+                                        <p class="text-left">${teaA_down.rAnsTea_content}</p>
+                                        <p class="text-right">${teaA_down.date}</p>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <div class="card-footer">
+                                <c:if test="${sessionScope.user.id == requestScope.question.stu_id}">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRKS" value="${A.teaA_id}" onclick="setAskValue(this)">
+                                        追问
+                                    </button>
+                                </c:if>
+                                <c:if test="${A.tea_id == sessionScope.user.id}">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newRAS" value="${A.teaA_id}" onclick="setAnswerValue(this)">
+                                        补充
+                                    </button>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -194,7 +212,7 @@
                         <div class="card-header">
                             <h2 class="mb-0">
                                 <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    ${status.count}# 学生解答
+                                        ${status.count}# 学生解答
                                 </button>
                             </h2>
                         </div>
@@ -203,10 +221,10 @@
                             <div class="card-body">
                                 <p class="text-left">${A.stuA_content}</p>
                                 <c:forEach items="${requestScope.mapStuA[A.stuA_id]}" var="stuA_down">
-<%--                                    <div>--%>
-<%--                                        <p class="text-left">${stuA_down.rAskStu_content}</p>--%>
-<%--                                        <p class="text-right">${stuA_down.date}</p>--%>
-<%--                                    </div>--%>
+                                    <%--                                    <div>--%>
+                                    <%--                                        <p class="text-left">${stuA_down.rAskStu_content}</p>--%>
+                                    <%--                                        <p class="text-right">${stuA_down.date}</p>--%>
+                                    <%--                                    </div>--%>
                                     <div>
                                         <p class="text-left">${stuA_down.rAnsStu_content}</p>
                                         <p class="text-right">${stuA_down.date}</p>
@@ -240,3 +258,4 @@
 <script src="js/myjs.js"></script>
 </body>
 </html>
+

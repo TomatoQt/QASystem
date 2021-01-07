@@ -78,6 +78,11 @@ public class QuestionAnswerServlet extends HttpServlet {
 
         //System.out.println(((ReAnswerStudent)mapStuA.get("SA2").get(0)).getrAnsStu_content());
 
-        request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);
+        if (((String)request.getSession().getAttribute("userType")).equals("student")){
+            request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);
+        }else {
+            request.getRequestDispatcher("QA4Teacher.jsp").forward(request,response);
+        }
+
     }
 }
