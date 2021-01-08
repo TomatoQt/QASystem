@@ -72,10 +72,10 @@
                     <div class="card-body">
                         <h5 class="card-title">${S.teaS_title}</h5>
                         <p class="card-text">${S.teaS_content}</p>
+                        <label class="offset-10">${S.teaS_time}</label>
+                        <a class="btn btn-danger" style="color: #e9ecef" href="deleteTeaSuggestion.do?teaS_id=${S.teaS_id}">删除建议</a>
                     </div>
-                    <label class="offset-10">
-                        ${S.teaS_time}
-                    </label>
+
                 </div>
             </c:forEach>
         </div>

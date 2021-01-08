@@ -75,6 +75,7 @@
                             ${A.teaA_time}
                         </label>
                         <a href="QuestionAnswer.do?Q_id=${A.q_id}" class="btn btn-primary">查看问题</a>
+                        <a class="btn btn-danger" style="color: #e9ecef" href="deleteAnswer.do?teaA_id=${A.teaA_id}">删除回答</a>
                     </div>
                 </div>
             </c:forEach>

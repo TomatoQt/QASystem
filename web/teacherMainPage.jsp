@@ -65,7 +65,7 @@
         <c:forEach items="${requestScope.questions}" var="Q">
             <div class="card mb-4">
                 <div class="card-header">
-                    提问者
+                    提问者:&nbsp;&nbsp;${Q.stu_id}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">${Q.title}</h5>
