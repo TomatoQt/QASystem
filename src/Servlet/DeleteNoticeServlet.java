@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteNoticeServlet")
+@WebServlet(name = "DeleteNoticeServlet", urlPatterns = {"/deleteNotice.do"})
 public class DeleteNoticeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String notice_id=request.getParameter("notice_id");
@@ -17,11 +17,12 @@ public class DeleteNoticeServlet extends HttpServlet {
         String message="";
         if (dao.deleteNotice(notice_id)){
             message="delete notice succeed";
-            request.getRequestDispatcher("").forward(request,response);
+//            request.getRequestDispatcher("").forward(request,response);
+            response.sendRedirect("CheckNotice.jsp");
         }else {
             message="delete notice failed";
-            System.out.println(message);
         }
+        System.out.println(message);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

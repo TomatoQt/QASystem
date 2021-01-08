@@ -96,6 +96,7 @@
                         <h5 class="card-title">${N.title}</h5>
                         <p class="card-text">${N.content}</p>
                         <label class="offset-10">${N.time}</label>
+                        <a class="btn btn-danger" style="color: #e9ecef" href="deleteNotice.do?notice_id=${N.id}">删除公告</a>
                     </div>
                 </div>
             </c:forEach>
