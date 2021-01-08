@@ -206,6 +206,7 @@
                             <div class="card-body">
                                 <p class="text-left">${A.stuA_content}</p>
                                 <label class="offset-10">${A.stuA_time}</label>
+                                <div class="separate_line"></div>
                                 <c:forEach items="${requestScope.mapStuA[A.stuA_id]}" var="stuA_down">
 <%--                                    <div>--%>
 <%--                                        <p class="text-left">${stuA_down.rAskStu_content}</p>--%>
@@ -213,7 +214,7 @@
 <%--                                    </div>--%>
                                     <div>
                                         <p class="text-left">${stuA_down.rAnsStu_content}</p>
-                                        <p class="text-right">${stuA_down.date}</p>
+                                        <label class="offset-10">${stuA_down.date}</label>
                                     </div>
                                 </c:forEach>
                             </div>

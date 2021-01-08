@@ -77,6 +77,7 @@
                         <h5 class="card-title">${S.stuS_title}</h5>
                         <p class="card-text">${S.stuS_content}</p>
                         <label class="offset-10">${S.stuS_time}</label>
+                        <a class="btn btn-danger" style="color: #e9ecef" href="deleteStuSuggestion.do?stuS_id=${S.stuS_id}">删除建议</a>
                     </div>
                 </div>
             </c:forEach>

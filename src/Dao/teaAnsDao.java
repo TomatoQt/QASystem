@@ -46,6 +46,22 @@ public class teaAnsDao extends BaseDao{
         }
     }
 
+    //delete by q_id
+    public boolean deleteTeaAnsByQid(String q_id){
+        String sql="DELETE FROM teaAnswer WHERE q_id=?";
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1,q_id);
+            pstmt.executeUpdate();
+            connection.close();
+            return true;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean updateTeaAns(teaAnswer tA){
         String sql="UPDATE teaAnswer SET q_id=?,tea_id=?,teaA_content=?,teaA_nice=?,teaA_tread=?,teaA_time=? WHERE teaA_id=?";
         try {

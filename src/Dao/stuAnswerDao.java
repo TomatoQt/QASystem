@@ -47,6 +47,22 @@ public class stuAnswerDao extends BaseDao{
         }
     }
 
+    //delete answer by qid
+    public boolean deleteStuAnswerByQid(String q_id){
+        String sql="DELETE FROM stuAnswer WHERE q_id=?";
+        try {
+            Connection connection=dataSource.getConnection();
+            PreparedStatement pstmt=connection.prepareStatement(sql);
+            pstmt.setString(1,q_id);
+            pstmt.executeUpdate();
+            connection.close();
+            return true;
+        }catch (SQLException se){
+            se.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean updateStuAnswer(StuAnswer stuAnswer){
         String sql="UPDATE stuAnswer SET q_id=?,stu_id=?,stuA_content=?,stuA_nice=?,stuA_tread=?,stuA_time=? WHERE stuA_id=?";
         try {

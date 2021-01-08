@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteStuSugServlet")
+@WebServlet(name = "DeleteStuSugServlet", urlPatterns = {"/deleteStuSuggestion.do"})
 public class DeleteStuSugServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String stuS_id=request.getParameter("stuS_id");
         stuSugDao dao=new stuSugDao();
         if (dao.deleteStuSug(stuS_id)){
-            response.sendRedirect("");//delete student suggestion page
+            response.sendRedirect("StudentSuggestions.jsp");//delete student suggestion page
         }else {
             System.out.println("delete student suggestion failed");
         }

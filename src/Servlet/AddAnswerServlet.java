@@ -30,7 +30,8 @@ public class AddAnswerServlet extends HttpServlet {
             StuAnswer stuAnswer=new StuAnswer(stuA_id,q_id,stu_id,stuA_content,stuA_nice,stuA_tread, TimeConverter.getDate_Str(stuA_time));
 
             if (dao.addStuAnswer(stuAnswer)){
-                request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);//add student answer page
+//                request.getRequestDispatcher("QuestionAnswer.jsp").forward(request,response);//add student answer page
+                response.sendRedirect("QuestionAnswer.do?Q_id="+q_id);
             }else {
                 System.out.println("add student answer failed");
             }
@@ -46,8 +47,8 @@ public class AddAnswerServlet extends HttpServlet {
             teaAnswer tA=new teaAnswer(teaA_id,q_id,tea_id,teaA_content,teaA_nice,teaA_tread,TimeConverter.getDate_Str(teaA_time));
 
             if (dao.addTeaAns(tA)){
-                request.getRequestDispatcher("QA4Teacher.jsp").forward(request,response);//add teacher answer page
-//                response.sendRedirect("QA4Teacher.jsp");//add teacher answer page
+//                request.getRequestDispatcher("QA4Teacher.jsp").forward(request,response);//add teacher answer page
+                response.sendRedirect("QuestionAnswer.do?Q_id="+q_id);//add teacher answer page
             }else {
                 System.out.println("add teacher answer failed");
             }

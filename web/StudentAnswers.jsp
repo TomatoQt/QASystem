@@ -78,6 +78,7 @@
                         <label class="offset-10">${A.stuA_time}</label>
                         <br>
                         <a href="QuestionAnswer.do?Q_id=${A.q_id}" class="btn btn-primary">查看问题</a>
+                        <a class="btn btn-danger" style="color: #e9ecef" href="deleteAnswer.do?stuA_id=${A.stuA_id}">删除回答</a>
                     </div>
                 </div>
             </c:forEach>

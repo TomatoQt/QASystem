@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "DeleteAnswerServlet")
+@WebServlet(name = "DeleteAnswerServlet", urlPatterns = {"/deleteAnswer.do"})
 public class DeleteAnswerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userType=(String)request.getSession().getAttribute("userType");
@@ -21,23 +21,23 @@ public class DeleteAnswerServlet extends HttpServlet {
             stuAnswerDao dao=new stuAnswerDao();
             if (dao.deleteStuAnswer(stuA_id)){
                 message_delete="delete student answer succeed";
-                request.getRequestDispatcher("").forward(request,response);//delete student answer page
-//                response.sendRedirect("");//delete student answer page
+//                request.getRequestDispatcher("").forward(request,response);//delete student answer page
+                response.sendRedirect("StudentAnswers.jsp");//delete student answer page
             }else {
                 message_delete="delete student answer failed";
-                System.out.println(message_delete);
             }
         }else {
             String teaA_id=request.getParameter("teaA_id");
             teaAnsDao dao=new teaAnsDao();
             if (dao.deleteTeaAns(teaA_id)){
                 message_delete="delete teacher answer succeed";
-                request.getRequestDispatcher("").forward(request,response);//delete teacher answer page
+//                request.getRequestDispatcher("").forward(request,response);//delete teacher answer page
+                response.sendRedirect("TeacherAnswers.jsp");//delete student answer page
             }else {
                 message_delete="delete teacher answer failed";
-                System.out.println(message_delete);
             }
         }
+        System.out.println(message_delete);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
