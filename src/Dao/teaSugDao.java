@@ -94,7 +94,7 @@ public class teaSugDao extends BaseDao{
             PreparedStatement pstmt=connection.prepareStatement(sql);
             pstmt.setString(1,tea_id);
             ResultSet rst=pstmt.executeQuery();
-            if (rst.next()){
+            while (rst.next()){
                 teaSuggestion tS=new teaSuggestion();
                 tS.setTeaS_id(rst.getString("teaS_id"));
                 tS.setTea_id(rst.getString("tea_id"));
@@ -118,7 +118,7 @@ public class teaSugDao extends BaseDao{
             Connection connection=dataSource.getConnection();
             PreparedStatement pstmt=connection.prepareStatement(sql);
             ResultSet rst=pstmt.executeQuery();
-            if (rst.next()){
+            while (rst.next()){
                 teaSuggestion tS=new teaSuggestion();
                 tS.setTeaS_id(rst.getString("teaS_id"));
                 tS.setTea_id(rst.getString("tea_id"));

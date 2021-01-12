@@ -27,6 +27,7 @@ public class SuggestionsFilter extends HttpFilter implements Filter {
         }else if (((String)req.getSession().getAttribute("userType")).equals("teacher")){//teacher
             teaSugDao dao=new teaSugDao();
             ArrayList<teaSuggestion> teaSugs=dao.findByTea_id(((Teacher)req.getSession().getAttribute("user")).getId());
+            System.out.println("size of teaSugs"+teaSugs.size());
             req.setAttribute("tea_suggestions",teaSugs);
         }else {//admin
             stuSugDao studao=new stuSugDao();
